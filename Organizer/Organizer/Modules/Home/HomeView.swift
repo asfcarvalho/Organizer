@@ -11,27 +11,61 @@ import SwiftUI
 //MARK: HomeView SwiftUI
 struct HomeView : View {
     
+    init() {
+        UITableView.appearance().backgroundColor = .white
+    }
+    
     var boxes: [Box] = [
-        Box(idBox: 1, titleBox: "Title", description: "Description", imageName: "photo", barcode: "123"),
-        Box(idBox: 2, titleBox: "Title2", description: "Description2", imageName: "photo", barcode: "123")
+        Box(idBox: 1, titleBox: "Title", description: "Description", imageName: "box_sample", barcode: "123", boxItems: nil),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: nil)
     ]
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(boxes, id: \.idBox) { box in
-                    HStack {
-                        Image(systemName: box.imageName ?? "photo")
-                        VStack(alignment: .leading) {
-                            Text(box.titleBox)
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Text(box.description ?? "")
-                        }
+            VStack {
+                List {
+                    ForEach(boxes, id: \.idBox) { box in
+                        HomeCell(box: box)
                     }
-                }
-            }.navigationBarTitle(Text("Boxes"))
-        }
+                }.navigationBarTitle(Text("Boxes"))
+                .navigationBarItems(trailing: Button(action: {
+                    addAction()
+                }) {
+                    Image(systemName: "plus.rectangle.on.rectangle")
+                        .imageScale(.large)
+                        .foregroundColor(.black)
+                })
+                .listStyle(PlainListStyle())
+            }
+        }.navigationBarColor(backgroundColor: .white)
+    }
+    
+    func addAction() {
+        print("add")
+    }
+}
+
+struct NavigationBarColor: ViewModifier {
+
+    init(backgroundColor: UIColor) {
+        let colorAppearance = UINavigationBarAppearance()
+        colorAppearance.configureWithOpaqueBackground()
+        colorAppearance.backgroundColor = backgroundColor
+        
+        UINavigationBar.appearance().standardAppearance = colorAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = colorAppearance
+        UINavigationBar.appearance().compactAppearance = colorAppearance
+        UINavigationBar.appearance().tintColor = backgroundColor
+    }
+    
+    func body(content: Content) -> some View {
+        content
+    }
+}
+
+extension View {
+    func navigationBarColor(backgroundColor: UIColor) -> some View {
+        self.modifier(NavigationBarColor(backgroundColor: backgroundColor))
     }
 }
 
