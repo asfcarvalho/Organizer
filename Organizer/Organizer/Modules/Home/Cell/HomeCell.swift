@@ -16,13 +16,18 @@ struct HomeCell : View {
             if box.imageName == nil {
                 Image(systemName: "photo")
                     .frame(width: 60, height: 60)
-                    .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+                    .overlay(RoundedRectangle(cornerRadius: 9)
+                                .stroke(Color.gray, lineWidth: 2))
             } else {
                 Image(box.imageName ?? "photo")
                     .resizable()
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+                    .scaledToFill()
                     .frame(width: 60, height: 60)
+                    .cornerRadius(9)
+                    .clipped()
+                    .overlay(RoundedRectangle(cornerRadius: 9)
+                                .stroke(Color.gray, lineWidth: 2))
+                    
             }
             VStack(alignment: .leading) {
                 Text(box.titleBox)
@@ -39,7 +44,7 @@ struct HomeCell : View {
 struct HomeCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeCell(box: Box(idBox: 0, titleBox: "Teste", description: "Description", imageName: nil, barcode: "123", boxItems: nil))
+            HomeCell(box: Box(idBox: 0, titleBox: "Teste", description: "Description", imageName: "box_sample", barcode: "123", boxItems: nil))
         }
     }
 }
