@@ -27,7 +27,7 @@ struct HomeView : View {
             VStack {
                 List {
                     ForEach(boxes, id: \.idBox) { box in
-                        NavigationLink(destination: BoxDetailView()) {
+                        NavigationLink(destination: BoxDetailView(box: box)) {
                             HomeCell(box: box)
                         }
                     }
