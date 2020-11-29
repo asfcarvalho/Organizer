@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8460F48D2572C51F008DC524 /* NewBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F48C2572C51E008DC524 /* NewBoxView.swift */; };
+		8460F4A125730866008DC524 /* ImageCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F4A025730866008DC524 /* ImageCustom.swift */; };
+		8460F4A7257310EF008DC524 /* BoxItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F4A6257310EE008DC524 /* BoxItemCell.swift */; };
 		8463EF4F25680AE100E10F2E /* OrganizerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463EF4E25680AE100E10F2E /* OrganizerApp.swift */; };
 		8463EF5125680AE100E10F2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463EF5025680AE100E10F2E /* ContentView.swift */; };
 		8463EF5325680AE400E10F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8463EF5225680AE400E10F2E /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8460F48C2572C51E008DC524 /* NewBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxView.swift; sourceTree = "<group>"; };
+		8460F4A025730866008DC524 /* ImageCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCustom.swift; sourceTree = "<group>"; };
+		8460F4A6257310EE008DC524 /* BoxItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxItemCell.swift; sourceTree = "<group>"; };
 		8463EF4B25680AE100E10F2E /* Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8463EF4E25680AE100E10F2E /* OrganizerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerApp.swift; sourceTree = "<group>"; };
 		8463EF5025680AE100E10F2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8460F4882572C4C8008DC524 /* NewBox */ = {
+			isa = PBXGroup;
+			children = (
+				8460F48C2572C51E008DC524 /* NewBoxView.swift */,
+			);
+			path = NewBox;
+			sourceTree = "<group>";
+		};
+		8460F4942572FA11008DC524 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8460F4A025730866008DC524 /* ImageCustom.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8460F4A5257310DD008DC524 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8460F4A6257310EE008DC524 /* BoxItemCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		8463EF4225680AE100E10F2E = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +133,7 @@
 		8463EF4D25680AE100E10F2E /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
+				8460F4942572FA11008DC524 /* Util */,
 				8463EF9A256816CE00E10F2E /* Resources */,
 				8463EF9125680F4100E10F2E /* Model */,
 				8463EF7C25680C0C00E10F2E /* Modules */,
@@ -144,6 +175,7 @@
 		8463EF7C25680C0C00E10F2E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8460F4882572C4C8008DC524 /* NewBox */,
 				8463EFA7256951F600E10F2E /* BoxDetail */,
 				8463EF7D25680C2200E10F2E /* Home */,
 			);
@@ -185,6 +217,7 @@
 		8463EFA7256951F600E10F2E /* BoxDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8460F4A5257310DD008DC524 /* Cell */,
 				8463EFA82569521E00E10F2E /* BoxDetailView.swift */,
 			);
 			path = BoxDetail;
@@ -321,6 +354,9 @@
 			files = (
 				8463EF8725680C3A00E10F2E /* HomeView.swift in Sources */,
 				8463EF9325680F5500E10F2E /* Box.swift in Sources */,
+				8460F4A125730866008DC524 /* ImageCustom.swift in Sources */,
+				8460F48D2572C51F008DC524 /* NewBoxView.swift in Sources */,
+				8460F4A7257310EF008DC524 /* BoxItemCell.swift in Sources */,
 				8463EF5125680AE100E10F2E /* ContentView.swift in Sources */,
 				8463EFA92569521E00E10F2E /* BoxDetailView.swift in Sources */,
 				8463EF4F25680AE100E10F2E /* OrganizerApp.swift in Sources */,

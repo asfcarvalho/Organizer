@@ -13,22 +13,9 @@ struct HomeCell : View {
     
     var body: some View {
         HStack {
-            if box.imageName == nil {
-                Image(systemName: "photo")
-                    .frame(width: 60, height: 60)
-                    .overlay(RoundedRectangle(cornerRadius: 9)
-                                .stroke(Color.gray, lineWidth: 2))
-            } else {
-                Image(box.imageName ?? "photo")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 60, height: 60)
-                    .cornerRadius(9)
-                    .clipped()
-                    .overlay(RoundedRectangle(cornerRadius: 9)
-                                .stroke(Color.gray, lineWidth: 2))
-                    
-            }
+            
+            ImageCustomCell(imageName: box.imageName)
+            
             VStack(alignment: .leading) {
                 Text(box.titleBox)
                     .font(.title)

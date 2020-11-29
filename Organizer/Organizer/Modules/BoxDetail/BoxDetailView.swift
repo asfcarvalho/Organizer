@@ -10,87 +10,81 @@ import SwiftUI
 struct BoxDetailView: View {
     
     var box = Box(idBox: 1, titleBox: "Title", description: "Description", imageName: "box_sample", barcode: "123", boxItems: [
-        BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles Controles Controles Controles Controles Controles Controles Controles Controles, Controles Controles Controles Controles Controles Controles Controles Controles Controles", imageName: "box_sample"),
-        BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample"),
-        BoxItem(idBoxItem: 3, titleBoxItem: "Caix 3", description: "Controles", imageName: "box_sample")
+        BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles Controles Controles Controles Controles Controles Controles Controles Controles, Controles Controles Controles Controles Controles Controles Controles Controles Controles", imageName: nil),
+        BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: nil),
+        BoxItem(idBoxItem: 3, titleBoxItem: "Caix 3", description: "Controles", imageName: "box_sample"),
+        BoxItem(idBoxItem: 4, titleBoxItem: "Caix 4", description: "Controles", imageName: nil)
     ])
     
+    private var gridItemLayout = [GridItem(.flexible(), spacing: 10),
+                                  GridItem(.flexible(), spacing: 10)]
+    
     var body: some View {
-        VStack {
-            List {
-                Section(header: Text("Box detail")) {
-                    VStack(alignment: .leading) {
-                        Image("box_sample")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 300)
-                            .cornerRadius(9)
-                            .clipped()
-                            .shadow(color: .black, radius: 9, x: 0, y: 1)
-                            .padding(.vertical, 16)
-                        VStack {
-                            Text("Description")
-                                .font(.headline)
-                            Spacer()
-                            Text(box.description ?? "")
-                                .font(.body)
-                        }.padding(.bottom, 16)
-                    }
-                }
-                Section(header: VStack(alignment: .center) {
-                    Text("Items")
+        ScrollView {
+            VStack(alignment: .leading) {
+                ImageCustomTop(imageName: box.imageName)
+                    .padding(.vertical, 16)
+                VStack {
+                    Text("Description")
                         .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)
                     Spacer()
-                }) {
+                    Text(box.description ?? "")
+                        .font(.body)
+                }.padding(.bottom, 16)
+                Divider().background(Color.gray)
+                Text("Items")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)
+                
+                LazyVGrid(columns: gridItemLayout, spacing: 10) {
                     ForEach(box.boxItems ?? [], id: \.idBoxItem) { item in
-                        NavigationLink(
-                            destination: ContentView()) {
+                        if let imageName = item.imageName {
+                            NavigationLink(
+                                destination:
+                                    ImageFull(imageName: imageName, title: item.titleBoxItem)) {
+                                BoxItemCell(boxItem: item)
+                            }
+                        } else {
                             BoxItemCell(boxItem: item)
                         }
-                        
                     }
                 }
-            }.listStyle(GroupedListStyle())
-            .navigationBarTitle(box.titleBox, displayMode: .inline)
+            }.padding(.horizontal, 16)
+            .padding(.bottom, 16)
         }
+        .navigationBarTitle(box.titleBox, displayMode: .inline)
+        .clipped()
     }
 }
 
-struct BoxItemCell: View {
+struct ImageFull: View {
     
-    var boxItem: BoxItem
+    var imageName: String
+    var title: String
     
     var body: some View {
-        HStack(alignment: .top) {
-            if boxItem.imageName == nil {
-                Image(systemName: "photo")
-                    .frame(width: 60, height: 60)
-                    .overlay(RoundedRectangle(cornerRadius: 9)
-                                .stroke(Color.gray, lineWidth: 2))
-            } else {
-                Image(boxItem.imageName ?? "photo")
+        VStack {
+            GeometryReader { geo in
+                Image(imageName)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 60, height: 60)
-                    .cornerRadius(9)
+                    .frame(width: geo.size.width)
+                    .cornerRadius(16)
                     .clipped()
-                    .overlay(RoundedRectangle(cornerRadius: 9)
-                                .stroke(Color.gray, lineWidth: 2))
-                    .padding(.vertical, 16)
-                
-            }
-            Text(boxItem.description ?? "")
-                .padding(EdgeInsets(top: 14, leading: 8, bottom: 16, trailing: 16))
-        }
+                    .shadow(color: .black, radius: 16, x: 0, y: 0)
+            }.padding(16)
+        }.navigationBarTitle(title, displayMode: .inline)
     }
 }
 
 #if DEBUG
 struct BoxDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BoxDetailView()
+        Group {
+            BoxDetailView()
+            ImageFull(imageName: "box_sample", title: "Box 1")
+        }
     }
 }
 #endif

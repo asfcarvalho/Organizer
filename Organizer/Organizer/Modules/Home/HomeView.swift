@@ -19,6 +19,38 @@ struct HomeView : View {
         Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
             BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
              BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ]),
+        Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
         ])
     ]
     
@@ -27,14 +59,12 @@ struct HomeView : View {
             VStack {
                 List {
                     ForEach(boxes, id: \.idBox) { box in
-                        NavigationLink(destination: BoxDetailView(box: box)) {
+                        NavigationLink(destination: BoxDetailView()) {
                             HomeCell(box: box)
                         }
                     }
                 }.navigationBarTitle(Text("Boxes"))
-                .navigationBarItems(trailing: Button(action: {
-                    addAction()
-                }) {
+                .navigationBarItems(trailing: NavigationLink(destination: NewBoxView()) {
                     Image(systemName: "plus.rectangle.on.rectangle")
                         .imageScale(.large)
                         .foregroundColor(.black)
@@ -42,11 +72,7 @@ struct HomeView : View {
                 .listStyle(PlainListStyle())
                 .navigationBarColor(backgroundColor: .white)
             }
-        }
-    }
-    
-    func addAction() {
-        print("add")
+        }.clipped()
     }
 }
 
