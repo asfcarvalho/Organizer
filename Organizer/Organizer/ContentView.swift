@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Organizer
 //
-//  Created by Anderson Carvalho on 20/11/20.
+//  Created by Anderson Carvalho on 29/11/20.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ struct ContentView: View {
     }
 }
 
-struct ContentViewPreviews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }

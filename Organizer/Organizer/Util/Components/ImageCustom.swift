@@ -11,7 +11,7 @@ struct ImageCustomCell: View {
     
     var imageName: String?
     
-    var body: some View {        
+    var body: some View {
         if let imageName = imageName {
             Image(imageName)
                 .resizable()
