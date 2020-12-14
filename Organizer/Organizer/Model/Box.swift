@@ -13,7 +13,7 @@ struct Box {
     let description: String?
     let imageName: String?
     let barcode: String?
-    let boxItems: [BoxItem]?
+    let boxItems: [BoxItem]?    
 }
 
 struct BoxItem {

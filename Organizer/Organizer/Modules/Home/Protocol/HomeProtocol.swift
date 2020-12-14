@@ -10,7 +10,7 @@ import UIKit
 protocol HomeWireFrameProtocol {
     static func createHomeView() -> UIViewController
     
-    func showBoxDetail(_ box: Box)
+    func showBoxDetail(from vieController: HomeViewProtocol?, _ box: Box)
 }
 
 protocol HomeViewProtocol {
@@ -23,8 +23,21 @@ protocol HomeViewProtocol {
 protocol HomePresenterProtocol {
     var view: HomeViewProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
+    var dataModule: HomeDataModuleInputProtocol? { get set }
     
     func viewDidLoad()
     func showBoxDetail(_ box: Box)
     func showNewBox()
+}
+
+protocol HomeDataModuleInputProtocol {
+    var presenter: HomeDataModuleOutputProtocol? { get set }
+    
+    func getBoxList()
+    func saveBox(_ box: Box?)
+}
+
+protocol HomeDataModuleOutputProtocol: class {
+    func onError(_ error: String)
+    func onSuccess(_ boxList: [BoxDM]?)
 }

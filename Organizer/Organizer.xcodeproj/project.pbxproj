@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8460F5AF25742174008DC524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5AE25742174008DC524 /* AppDelegate.swift */; };
 		8460F5B125742174008DC524 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5B025742174008DC524 /* SceneDelegate.swift */; };
-		8460F5B325742174008DC524 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5B225742174008DC524 /* ContentView.swift */; };
 		8460F5B525742184008DC524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8460F5B425742184008DC524 /* Assets.xcassets */; };
 		8460F5B825742184008DC524 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8460F5B725742184008DC524 /* Preview Assets.xcassets */; };
 		8460F5BB25742184008DC524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8460F5B925742184008DC524 /* LaunchScreen.storyboard */; };
@@ -30,6 +29,11 @@
 		8460F65025743EA4008DC524 /* BoxDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F64F25743EA3008DC524 /* BoxDetailProtocol.swift */; };
 		8460F65925743F1D008DC524 /* BoxDetailWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F65825743F1D008DC524 /* BoxDetailWireFrame.swift */; };
 		8460F65E25743F5A008DC524 /* BoxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F65D25743F5A008DC524 /* BoxDetailViewController.swift */; };
+		8482F49D25864A1A0022F798 /* Organizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8482F49B25864A1A0022F798 /* Organizer.xcdatamodeld */; };
+		8482F4B025864D9C0022F798 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4AF25864D9C0022F798 /* BaseDataModel.swift */; };
+		8482F4F7258663A10022F798 /* BoxItemDM+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */; };
+		8482F4F9258663A10022F798 /* BoxDM+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */; };
+		8482F50C25878E100022F798 /* HomeDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F50B25878E100022F798 /* HomeDataModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +57,6 @@
 		8460F5AB25742174008DC524 /* Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8460F5AE25742174008DC524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8460F5B025742174008DC524 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8460F5B225742174008DC524 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8460F5B425742184008DC524 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8460F5B725742184008DC524 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8460F5BA25742184008DC524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +82,11 @@
 		8460F64F25743EA3008DC524 /* BoxDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailProtocol.swift; sourceTree = "<group>"; };
 		8460F65825743F1D008DC524 /* BoxDetailWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailWireFrame.swift; sourceTree = "<group>"; };
 		8460F65D25743F5A008DC524 /* BoxDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailViewController.swift; sourceTree = "<group>"; };
+		8482F49C25864A1A0022F798 /* Organizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Organizer.xcdatamodel; sourceTree = "<group>"; };
+		8482F4AF25864D9C0022F798 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
+		8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoxItemDM+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoxDM+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8482F50B25878E100022F798 /* HomeDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,16 +137,12 @@
 		8460F5AD25742174008DC524 /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
+				8482F4AE25864D4F0022F798 /* Networks */,
+				8482F48B258649990022F798 /* Application */,
 				8460F5F5257422D8008DC524 /* Modules */,
 				8460F5EC257422AD008DC524 /* Model */,
 				8460F5E1257421D9008DC524 /* Util */,
 				8460F5EB2574229E008DC524 /* Resources */,
-				8460F5AE25742174008DC524 /* AppDelegate.swift */,
-				8460F5B025742174008DC524 /* SceneDelegate.swift */,
-				8460F5B225742174008DC524 /* ContentView.swift */,
-				8460F5B425742184008DC524 /* Assets.xcassets */,
-				8460F5B925742184008DC524 /* LaunchScreen.storyboard */,
-				8460F5BC25742184008DC524 /* Info.plist */,
 				8460F5B625742184008DC524 /* Preview Content */,
 			);
 			path = Organizer;
@@ -189,6 +193,8 @@
 		8460F5EB2574229E008DC524 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8460F5B425742184008DC524 /* Assets.xcassets */,
+				8482F49B25864A1A0022F798 /* Organizer.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 		8460F60D25742386008DC524 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8482F50A25878DC50022F798 /* DataModule */,
 				8460F645257434BF008DC524 /* ViewModel */,
 				8460F62D25742CBD008DC524 /* Protocol */,
 				8460F62C25742CA3008DC524 /* Presenter */,
@@ -331,6 +338,43 @@
 				8460F65825743F1D008DC524 /* BoxDetailWireFrame.swift */,
 			);
 			path = WireFrame;
+			sourceTree = "<group>";
+		};
+		8482F48B258649990022F798 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8460F5AE25742174008DC524 /* AppDelegate.swift */,
+				8460F5B025742174008DC524 /* SceneDelegate.swift */,
+				8460F5BC25742184008DC524 /* Info.plist */,
+				8460F5B925742184008DC524 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8482F4AE25864D4F0022F798 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				8482F4B4258662E10022F798 /* DataModels */,
+				8482F4AF25864D9C0022F798 /* BaseDataModel.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		8482F4B4258662E10022F798 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */,
+				8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		8482F50A25878DC50022F798 /* DataModule */ = {
+			isa = PBXGroup;
+			children = (
+				8482F50B25878E100022F798 /* HomeDataModule.swift */,
+			);
+			path = DataModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,11 +507,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8482F50C25878E100022F798 /* HomeDataModule.swift in Sources */,
 				8460F65025743EA4008DC524 /* BoxDetailProtocol.swift in Sources */,
+				8482F4F7258663A10022F798 /* BoxItemDM+CoreDataClass.swift in Sources */,
+				8482F49D25864A1A0022F798 /* Organizer.xcdatamodeld in Sources */,
 				8460F65925743F1D008DC524 /* BoxDetailWireFrame.swift in Sources */,
+				8482F4F9258663A10022F798 /* BoxDM+CoreDataClass.swift in Sources */,
 				8460F62F25742CFD008DC524 /* HomeProtocol.swift in Sources */,
 				8460F63725742D41008DC524 /* HomeWireFrame.swift in Sources */,
 				8460F60125742352008DC524 /* BoxItemCell.swift in Sources */,
+				8482F4B025864D9C0022F798 /* BaseDataModel.swift in Sources */,
 				8460F5AF25742174008DC524 /* AppDelegate.swift in Sources */,
 				8460F5F9257422FF008DC524 /* NewBoxView.swift in Sources */,
 				8460F619257423D5008DC524 /* HomeView.swift in Sources */,
@@ -476,7 +525,6 @@
 				8460F5E425742266008DC524 /* ImageCustom.swift in Sources */,
 				8460F65E25743F5A008DC524 /* BoxDetailViewController.swift in Sources */,
 				8460F6092574236B008DC524 /* BoxDetailView.swift in Sources */,
-				8460F5B325742174008DC524 /* ContentView.swift in Sources */,
 				8460F611257423B6008DC524 /* HomeCell.swift in Sources */,
 				8460F63C25742DCD008DC524 /* HomeViewController.swift in Sources */,
 				8460F647257434E5008DC524 /* HomeViewModel.swift in Sources */,
@@ -652,7 +700,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Organizer/Preview Content\"";
 				DEVELOPMENT_TEAM = 7TKVJKXN5X;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Organizer/Info.plist;
+				INFOPLIST_FILE = Organizer/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,7 +722,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Organizer/Preview Content\"";
 				DEVELOPMENT_TEAM = 7TKVJKXN5X;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Organizer/Info.plist;
+				INFOPLIST_FILE = Organizer/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -811,6 +859,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8482F49B25864A1A0022F798 /* Organizer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8482F49C25864A1A0022F798 /* Organizer.xcdatamodel */,
+			);
+			currentVersion = 8482F49C25864A1A0022F798 /* Organizer.xcdatamodel */;
+			path = Organizer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8460F5A325742173008DC524 /* Project object */;
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Box" representedClassName="BoxDM" syncable="YES" codeGenerationType="category">
+        <attribute name="barcode" optional="YES" attributeType="String"/>
+        <attribute name="boxDescription" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="boxItemList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BoxItem" inverseName="box" inverseEntity="BoxItem"/>
+    </entity>
+    <entity name="BoxItem" representedClassName="BoxItemDM" syncable="YES" codeGenerationType="category">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="box" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Box" inverseName="boxItemList" inverseEntity="Box"/>
+    </entity>
+    <elements>
+        <element name="Box" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="BoxItem" positionX="-54" positionY="27" width="128" height="103"/>
+    </elements>
+</model>
