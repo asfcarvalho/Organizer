@@ -38,4 +38,16 @@ class HomeWireFrame: HomeWireFrameProtocol {
             vc.navigationController?.pushViewController(boxDetail, animated: true)
         }
     }
+    
+    func showNewBox(from viewController: HomeViewProtocol?) {
+        let newBox = NewBoxWireFrame.createViewController()
+        
+        guard let vc = viewController as? HomeViewController else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            vc.navigationController?.pushViewController(newBox, animated: true)
+        }
+    }
 }

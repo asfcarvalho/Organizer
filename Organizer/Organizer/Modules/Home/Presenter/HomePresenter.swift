@@ -33,7 +33,7 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func showNewBox() {
-        
+        wireFrame?.showNewBox(from: view)
     }
 }
 

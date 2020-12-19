@@ -13,6 +13,7 @@ import SwiftUI
 struct HomeView : View {
     
     let selectedBoxPublisher = PassthroughSubject<Box, Never>()
+    let selecteNewBoxPublisher = ObservableObjectPublisher()
     @ObservedObject var homeViewModel: HomeViewModel
         
     var body: some View {
@@ -28,11 +29,14 @@ struct HomeView : View {
                     }
                 }
             }.navigationBarTitle(Text("Boxes"))
-            .navigationBarItems(trailing: NavigationLink(destination: NewBoxView()) {
+            .navigationBarItems(trailing:
                 Image(systemName: "plus.rectangle.on.rectangle")
                     .imageScale(.large)
-                    .foregroundColor(.black)
-            })
+                                    .foregroundColor(.black)
+                                    .onTapGesture {
+                                        self.selecteNewBoxPublisher.send()
+                                    }
+            )
             .listStyle(PlainListStyle())
             .navigationBarColor(backgroundColor: .white)
         }

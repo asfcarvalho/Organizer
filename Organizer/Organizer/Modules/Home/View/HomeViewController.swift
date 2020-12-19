@@ -10,7 +10,7 @@ import SwiftUI
 
 class HomeViewController: UIHostingController<HomeView> {
     
-    var selectedBoxToken: Cancellable?
+    private var token = Set<AnyCancellable>()
     var presenter: HomePresenterProtocol?
     
     override init(rootView: HomeView) {
@@ -30,9 +30,13 @@ class HomeViewController: UIHostingController<HomeView> {
     }
     
     func configureComunication() {
-        selectedBoxToken = rootView.selectedBoxPublisher.sink { [weak self] box in
+        rootView.selectedBoxPublisher.sink { [weak self] box in
             self?.presenter?.showBoxDetail(box)
-        }
+        }.store(in: &token)
+        
+        rootView.selecteNewBoxPublisher.sink(receiveValue: { [weak self] _ in
+            self?.presenter?.showNewBox()
+        }).store(in: &token)
     }
 }
 

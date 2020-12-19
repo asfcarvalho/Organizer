@@ -51,11 +51,13 @@
       "size" : "20x20"
     },
     {
+      "filename" : "Organizer@2x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "Organizer@3x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
