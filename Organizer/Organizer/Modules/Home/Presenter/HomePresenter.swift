@@ -24,7 +24,8 @@ class HomePresenter: HomePresenterProtocol {
         ])]
     
     func viewDidLoad() {
-        dataModule?.getBoxList()        
+//        dataModule?.saveBox(boxes?.first)
+        dataModule?.getBoxList()
     }
     
     func showBoxDetail(_ box: Box) {

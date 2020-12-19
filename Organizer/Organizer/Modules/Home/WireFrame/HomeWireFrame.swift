@@ -22,7 +22,10 @@ class HomeWireFrame: HomeWireFrameProtocol {
         presenter.dataModule = dataModule
         dataModule.presenter = presenter
         
-        return vc
+        let navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.prefersLargeTitles = true        
+        
+        return navigation
     }
     
     func showBoxDetail(from vieController: HomeViewProtocol?, _ box: Box) {
@@ -31,8 +34,8 @@ class HomeWireFrame: HomeWireFrameProtocol {
         guard let vc = vieController as? HomeViewController else {
             return
         }
-        boxDetail.modalPresentationStyle = .overFullScreen
-        boxDetail.modalTransitionStyle = .crossDissolve
-        vc.present(boxDetail, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            vc.navigationController?.pushViewController(boxDetail, animated: true)
+        }
     }
 }

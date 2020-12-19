@@ -16,28 +16,26 @@ struct HomeView : View {
     @ObservedObject var homeViewModel: HomeViewModel
         
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    ForEach(homeViewModel.boxes, id: \.idBox) { box in
-                        HStack {
-                            HomeCell(box: box)
-                            Spacer()
-                        }.contentShape(Rectangle())
-                        .onTapGesture {
-                            self.selectedBoxPublisher.send(box)
-                        }
+        VStack {
+            List {
+                ForEach(homeViewModel.boxes, id: \.idBox) { box in
+                    HStack {
+                        HomeCell(box: box)
+                        Spacer()
+                    }.contentShape(Rectangle())
+                    .onTapGesture {
+                        self.selectedBoxPublisher.send(box)
                     }
-                }.navigationBarTitle(Text("Boxes"))
-                .navigationBarItems(trailing: NavigationLink(destination: NewBoxView()) {
-                    Image(systemName: "plus.rectangle.on.rectangle")
-                        .imageScale(.large)
-                        .foregroundColor(.black)
-                })
-                .listStyle(PlainListStyle())
-                .navigationBarColor(backgroundColor: .white)
-            }
-        }.clipped()
+                }
+            }.navigationBarTitle(Text("Boxes"))
+            .navigationBarItems(trailing: NavigationLink(destination: NewBoxView()) {
+                Image(systemName: "plus.rectangle.on.rectangle")
+                    .imageScale(.large)
+                    .foregroundColor(.black)
+            })
+            .listStyle(PlainListStyle())
+            .navigationBarColor(backgroundColor: .white)
+        }
     }
 }
 

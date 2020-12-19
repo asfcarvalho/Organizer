@@ -34,7 +34,7 @@ class HomeDataModule: BaseDataModel, HomeDataModuleInputProtocol {
             boxDM.image = box?.imageName
             boxDM.boxItemList = nil
             
-            let items = BoxItemDM
+//            let items = BoxItemDM
             
             try context.save()
         } catch {
