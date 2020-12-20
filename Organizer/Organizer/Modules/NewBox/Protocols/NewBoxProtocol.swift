@@ -8,9 +8,18 @@
 import UIKit
 
 protocol NewBoxWireFrameProtocol {
-    static func createViewController() -> UIViewController
+    static func createViewController(_ box: Box?) -> UIViewController
 }
 
 protocol NewBoxViewProtocol {
+    var presenter: NewBoxPresenterProtocol? { get set }
     
+    func showBox(_ box: Box?)
+}
+
+protocol NewBoxPresenterProtocol {
+    var delegate: NewBoxViewProtocol? { get set }
+    var wireFrame: NewBoxWireFrameProtocol? { get set }
+    
+    func viewDidLoad()
 }

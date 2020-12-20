@@ -10,6 +10,8 @@
 		196A0977258E75AF0032F068 /* NewBoxProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0976258E75AF0032F068 /* NewBoxProtocol.swift */; };
 		196A097C258E760B0032F068 /* NewBoxWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A097B258E760B0032F068 /* NewBoxWireFrame.swift */; };
 		196A0981258E765E0032F068 /* NewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0980258E765E0032F068 /* NewBoxViewController.swift */; };
+		196A0990258E9E8D0032F068 /* NewBoxPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A098F258E9E8D0032F068 /* NewBoxPresenter.swift */; };
+		196A0996258FDE690032F068 /* NewBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0995258FDE690032F068 /* NewBoxViewModel.swift */; };
 		8460F5AF25742174008DC524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5AE25742174008DC524 /* AppDelegate.swift */; };
 		8460F5B125742174008DC524 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5B025742174008DC524 /* SceneDelegate.swift */; };
 		8460F5B525742184008DC524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8460F5B425742184008DC524 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		196A0976258E75AF0032F068 /* NewBoxProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxProtocol.swift; sourceTree = "<group>"; };
 		196A097B258E760B0032F068 /* NewBoxWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxWireFrame.swift; sourceTree = "<group>"; };
 		196A0980258E765E0032F068 /* NewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxViewController.swift; sourceTree = "<group>"; };
+		196A098F258E9E8D0032F068 /* NewBoxPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxPresenter.swift; sourceTree = "<group>"; };
+		196A0995258FDE690032F068 /* NewBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxViewModel.swift; sourceTree = "<group>"; };
 		8460F5AB25742174008DC524 /* Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8460F5AE25742174008DC524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8460F5B025742174008DC524 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,22 @@
 				196A0976258E75AF0032F068 /* NewBoxProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		196A098E258E9E130032F068 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				196A098F258E9E8D0032F068 /* NewBoxPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		196A0994258FDE560032F068 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				196A0995258FDE690032F068 /* NewBoxViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8460F5A225742173008DC524 = {
@@ -242,6 +262,8 @@
 		8460F5F6257422E8008DC524 /* NewBox */ = {
 			isa = PBXGroup;
 			children = (
+				196A0994258FDE560032F068 /* ViewModel */,
+				196A098E258E9E130032F068 /* Presenter */,
 				196A0975258E75910032F068 /* Protocols */,
 				196A0974258E75710032F068 /* WireFrame */,
 				8460F5F7257422EF008DC524 /* View */,
@@ -549,11 +571,13 @@
 				196A097C258E760B0032F068 /* NewBoxWireFrame.swift in Sources */,
 				8460F619257423D5008DC524 /* HomeView.swift in Sources */,
 				8460F5B125742174008DC524 /* SceneDelegate.swift in Sources */,
+				196A0990258E9E8D0032F068 /* NewBoxPresenter.swift in Sources */,
 				8460F641257431ED008DC524 /* HomePresenter.swift in Sources */,
 				8460F5E425742266008DC524 /* ImageCustom.swift in Sources */,
 				8460F65E25743F5A008DC524 /* BoxDetailViewController.swift in Sources */,
 				8460F6092574236B008DC524 /* BoxDetailView.swift in Sources */,
 				8460F611257423B6008DC524 /* HomeCell.swift in Sources */,
+				196A0996258FDE690032F068 /* NewBoxViewModel.swift in Sources */,
 				8460F63C25742DCD008DC524 /* HomeViewController.swift in Sources */,
 				8460F647257434E5008DC524 /* HomeViewModel.swift in Sources */,
 				8460F5EE257422C0008DC524 /* Box.swift in Sources */,

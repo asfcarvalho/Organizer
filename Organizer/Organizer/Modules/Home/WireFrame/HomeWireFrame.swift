@@ -39,8 +39,8 @@ class HomeWireFrame: HomeWireFrameProtocol {
         }
     }
     
-    func showNewBox(from viewController: HomeViewProtocol?) {
-        let newBox = NewBoxWireFrame.createViewController()
+    func showNewBox(from viewController: HomeViewProtocol?, _ box: Box?) {
+        let newBox = NewBoxWireFrame.createViewController(box)
         
         guard let vc = viewController as? HomeViewController else {
             return

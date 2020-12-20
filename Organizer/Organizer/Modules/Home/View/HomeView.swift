@@ -13,7 +13,7 @@ import SwiftUI
 struct HomeView : View {
     
     let selectedBoxPublisher = PassthroughSubject<Box, Never>()
-    let selecteNewBoxPublisher = ObservableObjectPublisher()
+    let selecteNewBoxPublisher = PassthroughSubject<Box?, Never>()
     @ObservedObject var homeViewModel: HomeViewModel
         
     var body: some View {
@@ -34,7 +34,7 @@ struct HomeView : View {
                     .imageScale(.large)
                                     .foregroundColor(.black)
                                     .onTapGesture {
-                                        self.selecteNewBoxPublisher.send()
+                                        self.selecteNewBoxPublisher.send(nil)
                                     }
             )
             .listStyle(PlainListStyle())

@@ -34,7 +34,7 @@ class HomeViewController: UIHostingController<HomeView> {
             self?.presenter?.showBoxDetail(box)
         }.store(in: &token)
         
-        rootView.selecteNewBoxPublisher.sink(receiveValue: { [weak self] _ in
+        rootView.selecteNewBoxPublisher.sink(receiveValue: { [weak self] box in
             self?.presenter?.showNewBox()
         }).store(in: &token)
     }

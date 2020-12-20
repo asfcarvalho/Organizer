@@ -33,7 +33,11 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func showNewBox() {
-        wireFrame?.showNewBox(from: view)
+        let box = Box(idBox: 2, titleBox: "Title2", description: "Description2 Description2 Description2 Description2 Description2 Description2", imageName: nil, barcode: "123", boxItems: [
+            BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles", imageName: "box_sample"),
+             BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: "box_sample")
+        ])
+        wireFrame?.showNewBox(from: view, box)
     }
 }
 

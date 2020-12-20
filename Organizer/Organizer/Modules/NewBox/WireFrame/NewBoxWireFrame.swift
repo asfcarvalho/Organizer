@@ -9,9 +9,12 @@ import UIKit
 
 class NewBoxWireFrame: NewBoxWireFrameProtocol {
     
-    class func createViewController() -> UIViewController {
+    class func createViewController(_ box: Box?) -> UIViewController {
         
-        let newBoxView = NewBoxView()
+        let newBoxViewModel = NewBoxViewModel()
+        newBoxViewModel.titleBox = box?.titleBox
+        
+        let newBoxView = NewBoxView(newBoxViewModel: newBoxViewModel)
         let viewController = NewBoxViewController(rootView: newBoxView)
         
         
