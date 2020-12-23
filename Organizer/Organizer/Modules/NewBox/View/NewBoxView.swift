@@ -8,19 +8,38 @@
 import SwiftUI
 import Combine
 
+enum TextTypeEnum {
+    case title
+    case description
+    case qrcode
+    case items
+    case imageName
+}
+
+typealias TextType = (TextTypeEnum, String)
+
 struct NewBoxView: View {
     
     @ObservedObject var newBoxViewModel: NewBoxViewModel
     
     let saveBoxPublisher = PassthroughSubject<NewBoxViewModel, Never>()
+    let textPublisher = PassthroughSubject<TextType, Never>()
     let cameraPublisher = ObservableObjectPublisher()
     let qrCodePublisher = ObservableObjectPublisher()
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var qrCode: String = ""
+    @State private var imageName: String = ""
+    @State private var buttonEnabled: Bool = false
+    @State private var items: [BoxItem] = []
     
     @State private var gridItemLayout = [GridItem(.flexible(), spacing: 10),
                                   GridItem(.flexible(), spacing: 10)]
+    
+    init(newBoxViewModel: NewBoxViewModel) {
+        UIScrollView.appearance().bounces = false
+        self.newBoxViewModel = newBoxViewModel
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +47,7 @@ struct NewBoxView: View {
                 ScrollView {
                     VStack {
                         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
-                            ImageCustomTop(imageName: "box_sample")
+                            ImageCustomTop(imageBase64: imageName)
                                 .padding(.vertical, 16)
                             
                             Button(action: {
@@ -50,7 +69,11 @@ struct NewBoxView: View {
                         }
                         VStack(alignment: .leading) {
                             ZStack(alignment: .trailing) {
-                                TextFieldCustom(title: "QRCode", placeholder: "Enter the code", fieldBeingEdited: $qrCode)
+                                TextFieldCustom(title: "QRCode", placeholder: "Enter the code", fieldBeingEdited: $qrCode) { editingChanged in
+                                    if !editingChanged {
+                                        self.textPublisher.send((TextTypeEnum.qrcode, qrCode))
+                                    }
+                                }
                                 Button(action: {
                                     print($qrCode)
                                     self.qrCodePublisher.send()
@@ -64,10 +87,16 @@ struct NewBoxView: View {
                             }
                         }.textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.top, 8)
-                        TextFieldCustom(title: "Title", placeholder: "Enter the title", fieldBeingEdited: $title).onReceive(newBoxViewModel.$titleBox, perform: { value in
-                            self.title = value ?? ""
+                        TextFieldCustom(title: "Title", placeholder: "Enter the title", fieldBeingEdited: $title) { editingChanged in
+                            if !editingChanged {
+                                self.textPublisher.send((TextTypeEnum.title, title))
+                            }
+                        }
+                        TextFieldCustom(title: "Description", placeholder: "Enter the description", fieldBeingEdited: $description, editingChanged: { editingChanged in
+                            if !editingChanged {
+                                self.textPublisher.send((TextTypeEnum.description, description))
+                            }
                         })
-                        TextFieldCustom(title: "Description", placeholder: "Enter the description", fieldBeingEdited: $description)
                             .padding(.bottom, 16)
                         
                         Divider()
@@ -90,10 +119,9 @@ struct NewBoxView: View {
                         }.padding(.bottom, 8)
                         
                         LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                            ImageCustomDetailCell(imageName: nil)
-                            ImageCustomDetailCell(imageName: "box_sample")
-                            ImageCustomDetailCell(imageName: nil)
-                            ImageCustomDetailCell(imageName: "box_sample")
+                            ForEach(items, id: \.idBoxItem) { item in
+                                DetailCell(item: item)
+                            }
                         }.listRowBackground(Color(red: 0.949, green: 0.949, blue: 0.967))
                         .padding(.bottom, 16)
                     }.padding(.horizontal, 16)
@@ -103,21 +131,35 @@ struct NewBoxView: View {
                 }
                 VStack {
                     Button(action: {
-                        print(title	)
-                        self.saveBoxPublisher.send(newBoxViewModel)
+                        self.saveBoxPublisher.send(NewBoxViewModel(title, description, qrCode, imageName, items))
                     }) {
                         Text("Save")
                             .font(.body)
                             .fontWeight(.bold)
                     }.foregroundColor(.white)
                     .frame(width: geometry.size.width - 32, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .background(Color.orange)
+                    .background(buttonColor)
                     .cornerRadius(9.0)
                     .padding(16)
+                    .disabled(!buttonEnabled)
                 }.shadow(color: .gray, radius: 9, x: 0.0, y: 1.0)
             }
         }.navigationBarTitle("New Box", displayMode: .inline)
         .clipped()
+        .onReceive(newBoxViewModel.$box, perform: { value in
+            self.title = value?.titleBox ?? ""
+            self.description = value?.description ?? ""
+            self.qrCode = value?.barcode ?? ""
+            self.imageName = value?.imageName ?? ""
+            self.items = value?.boxItems ?? []
+        })
+        .onReceive(newBoxViewModel.$buttonEnabled, perform: { status in
+            self.buttonEnabled = status ?? false
+        })
+    }
+    
+    private var buttonColor: Color {
+        buttonEnabled ? Color.orange : Color.gray
     }
     
     private func hideKeyboard() {
@@ -130,12 +172,13 @@ struct TextFieldCustom: View {
     var title: String
     var placeholder: String
     var fieldBeingEdited: Binding<String>
+    var editingChanged: (Bool) -> Void
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
                 .fontWeight(.semibold)
-            TextField(placeholder, text: fieldBeingEdited)
+            TextField(placeholder, text: fieldBeingEdited, onEditingChanged: editingChanged)
         }.textFieldStyle(RoundedBorderTextFieldStyle())
         .padding(.top, 8)
     }

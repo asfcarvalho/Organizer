@@ -35,7 +35,6 @@ protocol HomeDataModuleInputProtocol {
     var presenter: HomeDataModuleOutputProtocol? { get set }
     
     func getBoxList()
-    func saveBox(_ box: Box?)
 }
 
 protocol HomeDataModuleOutputProtocol: class {

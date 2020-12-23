@@ -9,10 +9,10 @@ import Foundation
 
 struct Box {
     let idBox: Int
-    let titleBox: String
-    let description: String?
-    let imageName: String?
-    let barcode: String?
+    var titleBox: String
+    var description: String?
+    var imageName: String?
+    var barcode: String?
     let boxItems: [BoxItem]?
 }
 

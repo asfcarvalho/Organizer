@@ -39,15 +39,7 @@ struct BoxDetailView: View {
                 
                 LazyVGrid(columns: gridItemLayout, spacing: 10) {
                     ForEach(box.boxItems ?? [], id: \.idBoxItem) { item in
-                        if let imageName = item.imageName {
-                            NavigationLink(
-                                destination:
-                                    ImageFull(imageName: imageName, title: item.titleBoxItem)) {
-                                BoxItemCell(boxItem: item)
-                            }
-                        } else {
-                            BoxItemCell(boxItem: item)
-                        }
+                        DetailCell(item: item)
                     }
                 }
             }.padding(.horizontal, 16)

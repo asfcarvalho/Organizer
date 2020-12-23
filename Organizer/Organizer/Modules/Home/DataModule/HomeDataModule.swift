@@ -22,40 +22,4 @@ class HomeDataModule: BaseDataModel, HomeDataModuleInputProtocol {
             presenter?.onError(error.localizedDescription)
         }
     }
-    
-    func saveBox(_ box: Box?) {
-        let context = persistentContainer.viewContext
-        
-        do {
-            let boxDM = BoxDM(context: context)
-            boxDM.id = getNextId()
-            boxDM.title = box?.titleBox
-            boxDM.boxDescription = box?.description
-            boxDM.image = box?.imageName
-            boxDM.boxItemList = nil
-            
-//            let items = BoxItemDM
-            
-            try context.save()
-        } catch {
-            presenter?.onError(error.localizedDescription)
-        }
-    }
-    
-    private func getNextId() -> Int64 {
-        let context = persistentContainer.viewContext
-        let request = BoxDM.fetchRequest() as NSFetchRequest<BoxDM>
-        request.fetchLimit = 1
-
-        let sort = NSSortDescriptor(key: "id", ascending: false)
-        request.sortDescriptors = [sort]
-
-        do {
-            let result = try context.fetch(request).first
-
-            return (result?.id ?? 0) + 1
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
 }

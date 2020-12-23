@@ -12,6 +12,8 @@
 		196A0981258E765E0032F068 /* NewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0980258E765E0032F068 /* NewBoxViewController.swift */; };
 		196A0990258E9E8D0032F068 /* NewBoxPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A098F258E9E8D0032F068 /* NewBoxPresenter.swift */; };
 		196A0996258FDE690032F068 /* NewBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0995258FDE690032F068 /* NewBoxViewModel.swift */; };
+		19F44CD82593717700D734E6 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F44CD72593717700D734E6 /* DetailCell.swift */; };
+		19F44CDE259383C900D734E6 /* NewBoxDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F44CDD259383C900D734E6 /* NewBoxDataModule.swift */; };
 		8460F5AF25742174008DC524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5AE25742174008DC524 /* AppDelegate.swift */; };
 		8460F5B125742174008DC524 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F5B025742174008DC524 /* SceneDelegate.swift */; };
 		8460F5B525742184008DC524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8460F5B425742184008DC524 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		196A0980258E765E0032F068 /* NewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxViewController.swift; sourceTree = "<group>"; };
 		196A098F258E9E8D0032F068 /* NewBoxPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxPresenter.swift; sourceTree = "<group>"; };
 		196A0995258FDE690032F068 /* NewBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxViewModel.swift; sourceTree = "<group>"; };
+		19F44CD72593717700D734E6 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		19F44CDD259383C900D734E6 /* NewBoxDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxDataModule.swift; sourceTree = "<group>"; };
 		8460F5AB25742174008DC524 /* Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8460F5AE25742174008DC524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8460F5B025742174008DC524 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		19F44CD52593713C00D734E6 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				19F44CD62593715700D734E6 /* Cells */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		19F44CD62593715700D734E6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19F44CD72593717700D734E6 /* DetailCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		19F44CDC259383A700D734E6 /* DataModule */ = {
+			isa = PBXGroup;
+			children = (
+				19F44CDD259383C900D734E6 /* NewBoxDataModule.swift */,
+			);
+			path = DataModule;
+			sourceTree = "<group>";
+		};
 		8460F5A225742173008DC524 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +207,7 @@
 		8460F5AD25742174008DC524 /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
+				19F44CD52593713C00D734E6 /* Commons */,
 				8482F4AE25864D4F0022F798 /* Networks */,
 				8482F48B258649990022F798 /* Application */,
 				8460F5F5257422D8008DC524 /* Modules */,
@@ -262,6 +291,7 @@
 		8460F5F6257422E8008DC524 /* NewBox */ = {
 			isa = PBXGroup;
 			children = (
+				19F44CDC259383A700D734E6 /* DataModule */,
 				196A0994258FDE560032F068 /* ViewModel */,
 				196A098E258E9E130032F068 /* Presenter */,
 				196A0975258E75910032F068 /* Protocols */,
@@ -565,6 +595,7 @@
 				196A0981258E765E0032F068 /* NewBoxViewController.swift in Sources */,
 				8460F60125742352008DC524 /* BoxItemCell.swift in Sources */,
 				8482F4B025864D9C0022F798 /* BaseDataModel.swift in Sources */,
+				19F44CDE259383C900D734E6 /* NewBoxDataModule.swift in Sources */,
 				8460F5AF25742174008DC524 /* AppDelegate.swift in Sources */,
 				196A0977258E75AF0032F068 /* NewBoxProtocol.swift in Sources */,
 				8460F5F9257422FF008DC524 /* NewBoxView.swift in Sources */,
@@ -580,6 +611,7 @@
 				196A0996258FDE690032F068 /* NewBoxViewModel.swift in Sources */,
 				8460F63C25742DCD008DC524 /* HomeViewController.swift in Sources */,
 				8460F647257434E5008DC524 /* HomeViewModel.swift in Sources */,
+				19F44CD82593717700D734E6 /* DetailCell.swift in Sources */,
 				8460F5EE257422C0008DC524 /* Box.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

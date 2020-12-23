@@ -14,7 +14,7 @@ struct HomeCell : View {
     var body: some View {
         HStack {
             
-            ImageCustomCell(imageName: box.imageName)
+            ImageCustomCell(imageBase64: box.imageName)
             
             VStack(alignment: .leading) {
                 Text(box.titleBox)
