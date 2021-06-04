@@ -23,12 +23,12 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
     }
 
     func viewDidLoad() {
-//        if newBoxViewModel?.box == nil {
+        if newBoxViewModel?.box == nil {
             newBoxItemViewModel = NewBoxItemViewModel()
-//        }
-//        if let newBoxViewModel = newBoxITemViewModel {
+        }
+        if let newBoxItemViewModel = newBoxItemViewModel {
 //            delegate?.showBox(newBoxViewModel)
-//        }
+        }
     }
     
     func saveBoxItem() {
