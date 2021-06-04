@@ -11,6 +11,7 @@ protocol NewBoxWireFrameProtocol {
     static func createViewController(_ box: Box?) -> UIViewController
     
     func showCamera(from viewController: NewBoxViewProtocol?, _ cameraView: UIViewController)
+    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?)
 }
 
 protocol NewBoxViewProtocol {
@@ -29,6 +30,7 @@ protocol NewBoxPresenterProtocol {
     func isSaveButtonEnabled(_ textType: TextType)
     func saveBox()
     func showCamera(_ cameraView: UIViewController)
+    func showBoxItem()
 }
 
 protocol NewBoxDataModuleInputProtocol {

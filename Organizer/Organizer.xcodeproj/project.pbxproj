@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1908C92C266A4F66005E6D55 /* NewBoxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C92B266A4F66005E6D55 /* NewBoxItemView.swift */; };
+		1908C92E266A5068005E6D55 /* NewBoxItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C92D266A5068005E6D55 /* NewBoxItemViewController.swift */; };
+		1908C932266A50BB005E6D55 /* NewBoxItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C931266A50BB005E6D55 /* NewBoxItemViewModel.swift */; };
+		1908C935266A527A005E6D55 /* NewBoxItemWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C934266A527A005E6D55 /* NewBoxItemWireFrame.swift */; };
+		1908C938266A57EC005E6D55 /* NewBoxItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C937266A57EC005E6D55 /* NewBoxItemPresenter.swift */; };
+		1908C93B266A5816005E6D55 /* NewBoxItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1908C93A266A5816005E6D55 /* NewBoxItemProtocol.swift */; };
 		196A0977258E75AF0032F068 /* NewBoxProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0976258E75AF0032F068 /* NewBoxProtocol.swift */; };
 		196A097C258E760B0032F068 /* NewBoxWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A097B258E760B0032F068 /* NewBoxWireFrame.swift */; };
 		196A0981258E765E0032F068 /* NewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A0980258E765E0032F068 /* NewBoxViewController.swift */; };
@@ -61,6 +67,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1908C92B266A4F66005E6D55 /* NewBoxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemView.swift; sourceTree = "<group>"; };
+		1908C92D266A5068005E6D55 /* NewBoxItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemViewController.swift; sourceTree = "<group>"; };
+		1908C931266A50BB005E6D55 /* NewBoxItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemViewModel.swift; sourceTree = "<group>"; };
+		1908C934266A527A005E6D55 /* NewBoxItemWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemWireFrame.swift; sourceTree = "<group>"; };
+		1908C937266A57EC005E6D55 /* NewBoxItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemPresenter.swift; sourceTree = "<group>"; };
+		1908C93A266A5816005E6D55 /* NewBoxItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxItemProtocol.swift; sourceTree = "<group>"; };
 		196A0976258E75AF0032F068 /* NewBoxProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxProtocol.swift; sourceTree = "<group>"; };
 		196A097B258E760B0032F068 /* NewBoxWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxWireFrame.swift; sourceTree = "<group>"; };
 		196A0980258E765E0032F068 /* NewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +140,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1908C92A266A4F4D005E6D55 /* NewBoxItem */ = {
+			isa = PBXGroup;
+			children = (
+				1908C939266A5803005E6D55 /* Protocols */,
+				1908C936266A57DC005E6D55 /* Presenter */,
+				1908C933266A5250005E6D55 /* WireFrame */,
+				1908C930266A509E005E6D55 /* ViewModel */,
+				1908C92F266A5095005E6D55 /* View */,
+			);
+			path = NewBoxItem;
+			sourceTree = "<group>";
+		};
+		1908C92F266A5095005E6D55 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1908C92B266A4F66005E6D55 /* NewBoxItemView.swift */,
+				1908C92D266A5068005E6D55 /* NewBoxItemViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1908C930266A509E005E6D55 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1908C931266A50BB005E6D55 /* NewBoxItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1908C933266A5250005E6D55 /* WireFrame */ = {
+			isa = PBXGroup;
+			children = (
+				1908C934266A527A005E6D55 /* NewBoxItemWireFrame.swift */,
+			);
+			path = WireFrame;
+			sourceTree = "<group>";
+		};
+		1908C936266A57DC005E6D55 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1908C937266A57EC005E6D55 /* NewBoxItemPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1908C939266A5803005E6D55 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1908C93A266A5816005E6D55 /* NewBoxItemProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		196A0974258E75710032F068 /* WireFrame */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +346,7 @@
 		8460F5F5257422D8008DC524 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1908C92A266A4F4D005E6D55 /* NewBoxItem */,
 				8460F60D25742386008DC524 /* Home */,
 				8460F5FD2574231C008DC524 /* BoxDetail */,
 				8460F5F6257422E8008DC524 /* NewBox */,
@@ -586,8 +652,11 @@
 			files = (
 				8482F50C25878E100022F798 /* HomeDataModule.swift in Sources */,
 				8460F65025743EA4008DC524 /* BoxDetailProtocol.swift in Sources */,
+				1908C932266A50BB005E6D55 /* NewBoxItemViewModel.swift in Sources */,
+				1908C935266A527A005E6D55 /* NewBoxItemWireFrame.swift in Sources */,
 				8482F4F7258663A10022F798 /* BoxItemDM+CoreDataClass.swift in Sources */,
 				8482F49D25864A1A0022F798 /* Organizer.xcdatamodeld in Sources */,
+				1908C93B266A5816005E6D55 /* NewBoxItemProtocol.swift in Sources */,
 				8460F65925743F1D008DC524 /* BoxDetailWireFrame.swift in Sources */,
 				8482F4F9258663A10022F798 /* BoxDM+CoreDataClass.swift in Sources */,
 				8460F62F25742CFD008DC524 /* HomeProtocol.swift in Sources */,
@@ -600,7 +669,9 @@
 				196A0977258E75AF0032F068 /* NewBoxProtocol.swift in Sources */,
 				8460F5F9257422FF008DC524 /* NewBoxView.swift in Sources */,
 				196A097C258E760B0032F068 /* NewBoxWireFrame.swift in Sources */,
+				1908C938266A57EC005E6D55 /* NewBoxItemPresenter.swift in Sources */,
 				8460F619257423D5008DC524 /* HomeView.swift in Sources */,
+				1908C92E266A5068005E6D55 /* NewBoxItemViewController.swift in Sources */,
 				8460F5B125742174008DC524 /* SceneDelegate.swift in Sources */,
 				196A0990258E9E8D0032F068 /* NewBoxPresenter.swift in Sources */,
 				8460F641257431ED008DC524 /* HomePresenter.swift in Sources */,
@@ -610,6 +681,7 @@
 				8460F611257423B6008DC524 /* HomeCell.swift in Sources */,
 				196A0996258FDE690032F068 /* NewBoxViewModel.swift in Sources */,
 				8460F63C25742DCD008DC524 /* HomeViewController.swift in Sources */,
+				1908C92C266A4F66005E6D55 /* NewBoxItemView.swift in Sources */,
 				8460F647257434E5008DC524 /* HomeViewModel.swift in Sources */,
 				19F44CD82593717700D734E6 /* DetailCell.swift in Sources */,
 				8460F5EE257422C0008DC524 /* Box.swift in Sources */,

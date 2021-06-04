@@ -1,20 +1,20 @@
 //
-//  NewBoxViewController.swift
+//  NewBoxItemViewController.swift
 //  Organizer
 //
-//  Created by Anderson F Carvalho on 19/12/20.
+//  Created by Anderson F Carvalho on 04/06/21.
 //
 
 import SwiftUI
 import Combine
 
-class NewBoxViewController: UIHostingController<NewBoxView> {
+class NewBoxItemViewController: UIHostingController<NewBoxItemView> {
     
     private var token = Set<AnyCancellable>()
-    var presenter: NewBoxPresenterProtocol?
+    var presenter: NewBoxItemPresenterProtocol?
     
-    override init(rootView: NewBoxView) {
-        super.init(rootView: rootView)
+    override init(rootView: NewBoxItemView) {
+        super.init(rootView:rootView)
         
         configureComunication()
     }
@@ -31,19 +31,15 @@ class NewBoxViewController: UIHostingController<NewBoxView> {
     
     func configureComunication() {
         rootView.saveBoxPublisher.sink { [weak self] newBoxViewModel in
-            self?.presenter?.saveBox()
+            self?.presenter?.saveBoxItem()
         }.store(in: &token)
-        
+
         rootView.textPublisher.sink { [weak self] textType in
             self?.presenter?.isSaveButtonEnabled(textType)
         }.store(in: &token)
-        
+
         rootView.cameraPublisher.sink { [weak self] _ in
             self?.showCamera()
-        }.store(in: &token)
-        
-        rootView.selecteNewBoxItemPublisher.sink { [weak self] boxItem in
-            self?.presenter?.showBoxItem()
         }.store(in: &token)
     }
     
@@ -56,25 +52,21 @@ class NewBoxViewController: UIHostingController<NewBoxView> {
     }
 }
 
-extension NewBoxViewController: NewBoxViewProtocol {
-    func showBox(_ newBoxViewModel: NewBoxViewModel) {
-        rootView.newBoxViewModel = newBoxViewModel
-    }
-    
+extension NewBoxItemViewController: NewBoxItemViewProtocol {
     func setSaveButtonEnabled(_ status: Bool) {
-        rootView.newBoxViewModel.buttonEnabled = status
+        rootView.newBoxItemViewModel.buttonEnabled = status
     }
 }
 
-extension NewBoxViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension NewBoxItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             let image64 = image.jpegData(compressionQuality: 0.5)?.base64EncodedString() ?? ""
-            self.presenter?.isSaveButtonEnabled((TextTypeEnum.imageName, image64))            
+            self.presenter?.isSaveButtonEnabled((TextTypeEnum.imageName, image64))
         }
         picker.dismiss(animated: true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

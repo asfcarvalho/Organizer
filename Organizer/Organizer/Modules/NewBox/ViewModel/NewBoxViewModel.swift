@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 class NewBoxViewModel: ObservableObject {
     @Published var box: Box?
     @Published var buttonEnabled: Bool?
     
+    private var token = Set<AnyCancellable>()
+    let newBoxItemPublisher = PassthroughSubject<BoxItem?, Never>()
+    
     init(_ box: Box?) {        
         self.box = box
+        configureComunication()
     }
     
     convenience init() {
@@ -24,5 +29,12 @@ class NewBoxViewModel: ObservableObject {
         let box = Box(idBox: 0, titleBox: title, description: description,
                       imageName: imageName, barcode: qrCode, boxItems: items)
         self.init(box)
+    }
+    
+    private func configureComunication() {
+        newBoxItemPublisher.sink { [weak self] boxItem in
+            guard let boxItem = boxItem else { return }
+            self?.box?.boxItems?.append(boxItem)
+        }.store(in: &token)
     }
 }

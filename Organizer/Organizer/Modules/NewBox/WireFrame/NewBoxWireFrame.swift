@@ -32,4 +32,16 @@ class NewBoxWireFrame: NewBoxWireFrameProtocol {
             viewController.present(cameraView, animated: true, completion: nil)
         }
     }
+    
+    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?) {
+        let newBox = NewBoxItemWireFrame.createViewController(boxItem, newBoxViewModel)
+        
+        guard let vc = viewController as? NewBoxViewController else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            vc.navigationController?.pushViewController(newBox, animated: true)
+        }
+    }
 }

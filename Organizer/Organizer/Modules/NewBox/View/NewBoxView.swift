@@ -16,13 +16,14 @@ enum TextTypeEnum {
     case imageName
 }
 
-typealias TextType = (TextTypeEnum, String)
+typealias TextType = (key: TextTypeEnum, value: String)
 
 struct NewBoxView: View {
     
     @ObservedObject var newBoxViewModel: NewBoxViewModel
     
     let saveBoxPublisher = PassthroughSubject<NewBoxViewModel, Never>()
+    let selecteNewBoxItemPublisher = PassthroughSubject<BoxItem?, Never>()
     let textPublisher = PassthroughSubject<TextType, Never>()
     let cameraPublisher = ObservableObjectPublisher()
     let qrCodePublisher = ObservableObjectPublisher()
@@ -109,7 +110,7 @@ struct NewBoxView: View {
                                 .fontWeight(.semibold)
                             Spacer()
                             Button(action: {
-                                print("More item")
+                                self.selecteNewBoxItemPublisher.send(nil)
                             }) {
                                 Image(systemName: "plus.square.fill.on.square.fill")
                                     .resizable()

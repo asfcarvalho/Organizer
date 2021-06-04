@@ -33,15 +33,15 @@ class NewBoxPresenter: NewBoxPresenterProtocol {
     }
     
     func isSaveButtonEnabled(_ textType: TextType) {
-        switch textType.0 {
+        switch textType.key {
         case .title:
-            newBoxViewModel?.box?.titleBox = textType.1
+            newBoxViewModel?.box?.titleBox = textType.value
         case .description:
-            newBoxViewModel?.box?.description = textType.1
+            newBoxViewModel?.box?.description = textType.value
         case .qrcode:
-            newBoxViewModel?.box?.barcode = textType.1
+            newBoxViewModel?.box?.barcode = textType.value
         default:
-            newBoxViewModel?.box?.imageName = textType.1
+            newBoxViewModel?.box?.imageName = textType.value
         }
         
         let status = !(newBoxViewModel?.box?.titleBox.isEmpty ?? false) &&
@@ -55,6 +55,10 @@ class NewBoxPresenter: NewBoxPresenterProtocol {
     
     func showCamera(_ cameraView: UIViewController) {
         wireFrame?.showCamera(from: delegate, cameraView)
+    }
+    
+    func showBoxItem() {
+        wireFrame?.showNewBoxItem(from: delegate, nil, newBoxViewModel)
     }
 }
 
