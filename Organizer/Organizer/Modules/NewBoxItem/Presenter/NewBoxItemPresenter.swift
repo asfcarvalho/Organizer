@@ -26,9 +26,9 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
         if newBoxViewModel?.box == nil {
             newBoxItemViewModel = NewBoxItemViewModel()
         }
-//        if let newBoxItemViewModel = newBoxItemViewModel {
+        if let newBoxItemViewModel = newBoxItemViewModel {
 //            delegate?.showBox(newBoxViewModel)
-//        }
+        }
     }
     
     func saveBoxItem() {
