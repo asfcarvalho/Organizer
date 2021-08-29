@@ -8,18 +8,15 @@
 import Foundation
 import CoreData
 
-class HomeDataModule: BaseDataModel, HomeDataModuleInputProtocol {
+class HomeDataModule: HomeDataModuleInputProtocol {
     weak var presenter: HomeDataModuleOutputProtocol?
     
     func getBoxList() {
-        let context = persistentContainer.viewContext
-        
-        let fetchRequest = BoxDM.fetchRequest() as NSFetchRequest<BoxDM>
-        do {
-            let box = try context.fetch(fetchRequest)
-            presenter?.onSuccess(box)
-        } catch {
-            presenter?.onError(error.localizedDescription)
+        guard let box = BaseDataModel.shared.fetchEntities(entity: BoxDM.self) else {
+            presenter?.onError("Erro loading box list")
+            return
         }
+        
+        presenter?.onSuccess(box)
     }
 }

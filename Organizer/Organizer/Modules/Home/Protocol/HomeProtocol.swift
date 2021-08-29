@@ -10,8 +10,7 @@ import UIKit
 protocol HomeWireFrameProtocol {
     static func createHomeView() -> UIViewController
     
-    func showBoxDetail(from vieController: HomeViewProtocol?, _ box: Box)
-    func showNewBox(from viewController: HomeViewProtocol?, _ box: Box?) 
+    func showNewOrEditBox(from viewController: HomeViewProtocol?, _ box: Box?)
 }
 
 protocol HomeViewProtocol {

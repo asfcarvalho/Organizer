@@ -36,7 +36,7 @@ protocol NewBoxPresenterProtocol {
 protocol NewBoxDataModuleInputProtocol {
     var presenter: NewBoxDataModuleOutputProtocol? { get set }
     
-    func saveBox(_ box: Box?)
+    func saveOrUpdateBox(_ box: Box?)
 }
 
 protocol NewBoxDataModuleOutputProtocol: class {

@@ -28,18 +28,7 @@ class HomeWireFrame: HomeWireFrameProtocol {
         return navigation
     }
     
-    func showBoxDetail(from vieController: HomeViewProtocol?, _ box: Box) {
-        let boxDetail = BoxDetailWireFrame.createBoxDetailView(box)
-            
-        guard let vc = vieController as? HomeViewController else {
-            return
-        }
-        DispatchQueue.main.async {
-            vc.navigationController?.pushViewController(boxDetail, animated: true)
-        }
-    }
-    
-    func showNewBox(from viewController: HomeViewProtocol?, _ box: Box?) {
+    func showNewOrEditBox(from viewController: HomeViewProtocol?, _ box: Box?) {
         let newBox = NewBoxWireFrame.createViewController(box)
         
         guard let vc = viewController as? HomeViewController else {

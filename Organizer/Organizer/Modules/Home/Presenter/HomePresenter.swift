@@ -20,11 +20,11 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func showBoxDetail(_ box: Box) {
-        wireFrame?.showBoxDetail(from: view, box)
+        wireFrame?.showNewOrEditBox(from: view, box)
     }
     
     func showNewBox() {
-        wireFrame?.showNewBox(from: view, nil)
+        wireFrame?.showNewOrEditBox(from: view, nil)
     }
 }
 

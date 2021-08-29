@@ -10,13 +10,18 @@ import Combine
 
 class NewBoxViewModel: ObservableObject {
     @Published var box: Box?
-    @Published var buttonEnabled: Bool?
+    @Published var buttonEnabled: Bool
+    @Published var boxViewName: String
     
+    private var isNewBox: Bool = true    
     private var token = Set<AnyCancellable>()
     let newBoxItemPublisher = PassthroughSubject<BoxItem?, Never>()
     
     init(_ box: Box?) {        
         self.box = box
+        self.isNewBox = box?.idBox == 0
+        self.boxViewName = box?.idBox == 0 ? "New Box" : box?.titleBox ?? ""
+        self.buttonEnabled = false
         configureComunication()
     }
     

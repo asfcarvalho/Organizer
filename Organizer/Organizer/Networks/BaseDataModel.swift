@@ -7,25 +7,74 @@
 
 import CoreData
 
-class BaseDataModel {
+enum CoreDataOperation {
+    case success
+    case failed
+}
+
+enum ErrorType: Error {
+    case errorDefault
+}
+
+final class BaseDataModel {
     
-    lazy var persistentContainer: NSPersistentContainer = {
-       let container = NSPersistentContainer(name: "Organizer")
-        container.loadPersistentStores { (description, error) in
-            if let error = error {
-                fatalError("Unable to load persisten stores: \(error)")
+    static let shared = BaseDataModel(modelName: "Organizer")
+    
+    private let modelName: String
+    
+    init(modelName: String) {
+        self.modelName = modelName
+        
+        initPersistentContainer()
+    }
+    
+    private func initPersistentContainer() {
+        DispatchQueue.main.async { [weak self] in
+            self?.persistentContainer.loadPersistentStores { description, error in
+                if let error = error {
+                    debugPrint("Load error:", error)
+                } else {
+                    debugPrint("stored path: ", description)
+                }
             }
         }
+    }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: self.modelName)
         return container
     }()
+        
+    lazy var managedContext: NSManagedObjectContext = {
+        let mainContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        mainContext.parent = persistentContainer.viewContext
+        return mainContext
+    }()
     
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        guard context.hasChanges else { return }
+    lazy var privateManagedContext: NSManagedObjectContext = {
+        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateContext.parent = persistentContainer.viewContext
+        return privateContext
+    }()
+    
+    func saveContext(completion: @escaping (CoreDataOperation) -> ()) {
         do {
-            try context.save()
+            try privateManagedContext.save()
+            completion(.success)
         } catch {
-            print("Failure to save context: \(error)")
+            completion(.failed)
+        }
+    }
+    
+    func fetchEntities<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> [T]? {
+        let fetchData = T.fetchRequest()
+        
+        do {
+            fetchData.predicate = predicate
+            fetchData.sortDescriptors = sortDescriptors
+            return try managedContext.fetch(fetchData) as? [T]
+        } catch {
+            return nil
         }
     }
 }

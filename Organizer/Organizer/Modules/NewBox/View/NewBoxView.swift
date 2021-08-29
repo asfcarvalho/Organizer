@@ -33,6 +33,8 @@ struct NewBoxView: View {
     @State private var imageName: String = ""
     @State private var buttonEnabled: Bool = false
     @State private var items: [BoxItem] = []
+    @State private var boxViewName = "New Box"
+    @State private var isNewBox = true
     
     @State private var gridItemLayout = [GridItem(.flexible(), spacing: 10),
                                   GridItem(.flexible(), spacing: 10)]
@@ -147,7 +149,7 @@ struct NewBoxView: View {
                     .disabled(!buttonEnabled)
                 }.shadow(color: .gray, radius: 9, x: 0.0, y: 1.0)
             }.frame(width: geometry.size.width)
-        }.navigationBarTitle("New Box", displayMode: .inline)
+        }.navigationBarTitle(boxViewName, displayMode: .inline)
         .clipped()
         .onReceive(newBoxViewModel.$box, perform: { value in
             self.title = value?.titleBox ?? ""
@@ -157,7 +159,10 @@ struct NewBoxView: View {
             self.items = value?.boxItems ?? []
         })
         .onReceive(newBoxViewModel.$buttonEnabled, perform: { status in
-            self.buttonEnabled = status ?? false
+            self.buttonEnabled = status
+        })
+        .onReceive(newBoxViewModel.$boxViewName, perform: { boxViewName in
+            self.boxViewName = boxViewName
         })
     }
     
