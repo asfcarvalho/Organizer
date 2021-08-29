@@ -32,6 +32,7 @@ class NewBoxItemViewController: UIHostingController<NewBoxItemView> {
     func configureComunication() {
         rootView.saveBoxPublisher.sink { [weak self] newBoxViewModel in
             self?.presenter?.saveBoxItem()
+            self?.navigationController?.popViewController(animated: true)
         }.store(in: &token)
 
         rootView.textPublisher.sink { [weak self] textType in
@@ -55,6 +56,10 @@ class NewBoxItemViewController: UIHostingController<NewBoxItemView> {
 extension NewBoxItemViewController: NewBoxItemViewProtocol {
     func setSaveButtonEnabled(_ status: Bool) {
         rootView.newBoxItemViewModel.buttonEnabled = status
+    }
+    
+    func showBoxItem(_ newBoxItemViewModel: NewBoxItemViewModel) {
+        rootView.newBoxItemViewModel = newBoxItemViewModel
     }
 }
 

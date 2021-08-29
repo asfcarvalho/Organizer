@@ -75,7 +75,6 @@ struct ImageCustomTop: View {
             Image(systemName: "photo")
                 .resizable()
                 .scaledToFill()
-                .frame(height: 300)
                 .cornerRadius(9)
                 .clipped()
                 .foregroundColor(.gray)

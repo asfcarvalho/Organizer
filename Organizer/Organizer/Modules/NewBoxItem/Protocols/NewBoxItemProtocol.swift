@@ -17,6 +17,7 @@ protocol NewBoxItemViewProtocol {
     var presenter: NewBoxItemPresenterProtocol? { get set }
     
     func setSaveButtonEnabled(_ status: Bool)
+    func showBoxItem(_ newBoxItemViewModel: NewBoxItemViewModel)
 }
 
 protocol NewBoxItemPresenterProtocol {

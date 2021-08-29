@@ -11,7 +11,10 @@ class NewBoxItemWireFrame : NewBoxItemWireFrameProtocol {
 
     class func createViewController(_ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?) -> UIViewController {
         
-        let newBoxItemViewModel = NewBoxItemViewModel(boxItem)
+        var newBoxItemViewModel = NewBoxItemViewModel()
+        if let boxItem = boxItem {
+            newBoxItemViewModel = NewBoxItemViewModel(boxItem)
+        }
         let newBoxItemView = NewBoxItemView(newBoxItemViewModel: newBoxItemViewModel)
         let viewController = NewBoxItemViewController(rootView: newBoxItemView)
         var presenter: NewBoxItemPresenterProtocol = NewBoxItemPresenter(newBoxItemViewModel, newBoxViewModel)

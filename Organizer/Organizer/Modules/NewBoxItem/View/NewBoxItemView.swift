@@ -66,7 +66,8 @@ struct NewBoxItemView: View {
                             }
                         })
                             .padding(.bottom, 16)
-                    }.padding(.horizontal, 16)
+                    }.frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(.horizontal, 16)
                 }
                 .onTapGesture {
                     hideKeyboard()

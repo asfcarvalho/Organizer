@@ -27,7 +27,7 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
             newBoxItemViewModel = NewBoxItemViewModel()
         }
         if let newBoxItemViewModel = newBoxItemViewModel {
-//            delegate?.showBox(newBoxViewModel)
+            delegate?.showBoxItem(newBoxItemViewModel)
         }
     }
     
@@ -45,9 +45,9 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
             newBoxItemViewModel?.boxItem?.imageName = textType.value
         }
         
-        let status = !(newBoxItemViewModel?.boxItem?.titleBoxItem.isEmpty ?? false) &&
-            !(newBoxItemViewModel?.boxItem?.description?.isEmpty ?? false) //&&
-//            !(newBoxItemViewModel?.boxItem?.imageName?.isEmpty ?? false)
+        let status = !(newBoxItemViewModel?.boxItem?.titleBoxItem.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.description?.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.imageName?.isEmpty ?? true)
         
         delegate?.setSaveButtonEnabled(status)
     }

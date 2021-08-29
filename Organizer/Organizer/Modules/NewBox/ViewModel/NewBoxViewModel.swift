@@ -33,7 +33,10 @@ class NewBoxViewModel: ObservableObject {
     
     private func configureComunication() {
         newBoxItemPublisher.sink { [weak self] boxItem in
-            guard let boxItem = boxItem else { return }
+            guard var boxItem = boxItem else { return }
+            if boxItem.idBoxItem == 0 {
+                boxItem.idBoxItem = self?.box?.boxItems?.count ?? 0 + 1
+            }
             self?.box?.boxItems?.append(boxItem)
         }.store(in: &token)
     }

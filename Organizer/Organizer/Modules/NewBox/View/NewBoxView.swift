@@ -47,12 +47,11 @@ struct NewBoxView: View {
             VStack {
                 ScrollView {
                     VStack {
+                        // MARK: Image top
                         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
                             ImageCustomTop(imageBase64: imageName)
                                 .padding(.vertical, 16)
-                            
                             Button(action: {
-                                print("Image")
                                 self.cameraPublisher.send()
                             }) {
                                 ZStack {
@@ -64,10 +63,12 @@ struct NewBoxView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 50, height: 50)
+                                        .foregroundColor(Color.white.opacity(0.8))
                                 }
-                            }.foregroundColor(.gray)
+                            }
                             
-                        }
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                        // MARK: QRCode
                         VStack(alignment: .leading) {
                             ZStack(alignment: .trailing) {
                                 TextFieldCustom(title: "QRCode", placeholder: "Enter the code", fieldBeingEdited: $qrCode) { editingChanged in
@@ -125,7 +126,8 @@ struct NewBoxView: View {
                             }
                         }.listRowBackground(Color(red: 0.949, green: 0.949, blue: 0.967))
                         .padding(.bottom, 16)
-                    }.padding(.horizontal, 16)
+                    }.frame(minWidth: 0, maxWidth: .infinity)
+                    .padding(.horizontal, 16)
                 }
                 .onTapGesture {
                     hideKeyboard()
@@ -144,7 +146,7 @@ struct NewBoxView: View {
                     .padding(16)
                     .disabled(!buttonEnabled)
                 }.shadow(color: .gray, radius: 9, x: 0.0, y: 1.0)
-            }
+            }.frame(width: geometry.size.width)
         }.navigationBarTitle("New Box", displayMode: .inline)
         .clipped()
         .onReceive(newBoxViewModel.$box, perform: { value in

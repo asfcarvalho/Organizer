@@ -11,7 +11,7 @@ class NewBoxItemViewModel: ObservableObject {
     @Published var boxItem: BoxItem?
     @Published var buttonEnabled: Bool?
     
-    init(_ boxItem: BoxItem?) {
+    init(_ boxItem: BoxItem) {
         self.boxItem = boxItem
     }
     

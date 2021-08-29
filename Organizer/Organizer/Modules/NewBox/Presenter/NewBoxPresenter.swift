@@ -44,10 +44,10 @@ class NewBoxPresenter: NewBoxPresenterProtocol {
             newBoxViewModel?.box?.imageName = textType.value
         }
         
-        let status = !(newBoxViewModel?.box?.titleBox.isEmpty ?? false) &&
-            !(newBoxViewModel?.box?.description?.isEmpty ?? false) &&
-            !(newBoxViewModel?.box?.barcode?.isEmpty ?? false) &&
-            !(newBoxViewModel?.box?.imageName?.isEmpty ?? false) &&
+        let status = !(newBoxViewModel?.box?.titleBox.isEmpty ?? true) &&
+            !(newBoxViewModel?.box?.description?.isEmpty ?? true) &&
+            !(newBoxViewModel?.box?.barcode?.isEmpty ?? true) &&
+            !(newBoxViewModel?.box?.imageName?.isEmpty ?? true) &&
             (newBoxViewModel?.box?.boxItems?.count ?? 0) > 0
         
         delegate?.setSaveButtonEnabled(status)

@@ -17,7 +17,7 @@ struct Box {
 }
 
 struct BoxItem {
-    let idBoxItem: Int
+    var idBoxItem: Int
     var titleBoxItem: String
     var description: String?
     var imageName: String?
