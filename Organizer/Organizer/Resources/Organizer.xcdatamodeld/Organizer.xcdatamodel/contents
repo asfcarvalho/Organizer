@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Box" representedClassName="BoxDM" syncable="YES" codeGenerationType="category">
+    <entity name="Box" representedClassName="Box" syncable="YES" codeGenerationType="class">
         <attribute name="barcode" optional="YES" attributeType="String"/>
         <attribute name="boxDescription" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -8,14 +8,15 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="boxItemList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BoxItem" inverseName="box" inverseEntity="BoxItem"/>
     </entity>
-    <entity name="BoxItem" representedClassName="BoxItemDM" syncable="YES" codeGenerationType="category">
+    <entity name="BoxItem" representedClassName="BoxItem" syncable="YES" codeGenerationType="class">
+        <attribute name="boxItemDescription" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="box" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Box" inverseName="boxItemList" inverseEntity="Box"/>
     </entity>
     <elements>
-        <element name="BoxItem" positionX="-54" positionY="27" width="128" height="89"/>
-        <element name="Box" positionX="-54" positionY="27" width="128" height="119"/>
+        <element name="Box" positionX="-54" positionY="27" width="128" height="14"/>
+        <element name="BoxItem" positionX="-54" positionY="27" width="128" height="104"/>
     </elements>
 </model>

@@ -12,10 +12,10 @@ struct DetailCell: View {
     var item: BoxItem
     
     var body: some View {
-        if let imageName = item.imageName {
+        if let imageName = item.image {
             NavigationLink(
                 destination:
-                    ImageFull(imageName: imageName, title: item.titleBoxItem)) {
+                    ImageFull(imageName: imageName, title: item.title ?? "")) {
                 BoxItemCell(boxItem: item)
             }
         } else {

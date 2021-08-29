@@ -33,8 +33,7 @@ extension HomePresenter: HomeDataModuleOutputProtocol {
         print(error)
     }
     
-    func onSuccess(_ boxList: [BoxDM]?) {
-        boxes = BoxDM.getBoxes(boxList)
-        view?.showData(boxes ?? [])
+    func onSuccess(_ boxList: [Box]?) {
+        view?.showData(boxList ?? [])
     }
 }

@@ -35,20 +35,20 @@ class NewBoxPresenter: NewBoxPresenterProtocol {
     func isSaveButtonEnabled(_ textType: TextType) {
         switch textType.key {
         case .title:
-            newBoxViewModel?.box?.titleBox = textType.value
+            newBoxViewModel?.box?.title = textType.value
         case .description:
-            newBoxViewModel?.box?.description = textType.value
+            newBoxViewModel?.box?.boxDescription = textType.value
         case .qrcode:
             newBoxViewModel?.box?.barcode = textType.value
         default:
-            newBoxViewModel?.box?.imageName = textType.value
+            newBoxViewModel?.box?.image = textType.value
         }
         
-        let status = !(newBoxViewModel?.box?.titleBox.isEmpty ?? true) &&
-            !(newBoxViewModel?.box?.description?.isEmpty ?? true) &&
+        let status = !(newBoxViewModel?.box?.title?.isEmpty ?? true) &&
+            !(newBoxViewModel?.box?.boxDescription?.isEmpty ?? true) &&
             !(newBoxViewModel?.box?.barcode?.isEmpty ?? true) &&
-            !(newBoxViewModel?.box?.imageName?.isEmpty ?? true) &&
-            (newBoxViewModel?.box?.boxItems?.count ?? 0) > 0
+            !(newBoxViewModel?.box?.image?.isEmpty ?? true) &&
+            (newBoxViewModel?.box?.boxItemList?.count ?? 0) > 0
         
         delegate?.setSaveButtonEnabled(status)
     }

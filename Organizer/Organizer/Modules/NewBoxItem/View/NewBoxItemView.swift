@@ -90,9 +90,9 @@ struct NewBoxItemView: View {
         }.navigationBarTitle("New Box Item", displayMode: .inline)
         .clipped()
         .onReceive(newBoxItemViewModel.$boxItem, perform: { value in
-            self.title = value?.titleBoxItem ?? ""
+            self.title = value?.title ?? ""
             self.description = value?.description ?? ""
-            self.imageName = value?.imageName ?? ""
+            self.imageName = value?.image ?? ""
         })
         .onReceive(newBoxItemViewModel.$buttonEnabled, perform: { status in
             self.buttonEnabled = status ?? false

@@ -22,7 +22,7 @@ struct HomeView : View {
             if !isEmpty {
                 VStack {
                     List {
-                        ForEach(homeViewModel.boxes, id: \.idBox) { box in
+                        ForEach(homeViewModel.boxes, id: \.id) { box in
                             HStack {
                                 HomeCell(box: box)
                                 Spacer()

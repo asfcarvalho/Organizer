@@ -17,32 +17,32 @@ class NewBoxViewModel: ObservableObject {
     private var token = Set<AnyCancellable>()
     let newBoxItemPublisher = PassthroughSubject<BoxItem?, Never>()
     
-    init(_ box: Box?) {        
+    init(_ box: Box? = nil) {        
         self.box = box
-        self.isNewBox = box?.idBox == 0
-        self.boxViewName = box?.idBox == 0 ? "New Box" : box?.titleBox ?? ""
+        if let box = box {
+            self.boxViewName = box.title ?? ""
+        } else {
+            self.isNewBox = true
+            self.boxViewName = "New Box"
+        }
+        
         self.buttonEnabled = false
         configureComunication()
     }
     
-    convenience init() {
-        self.init(Box(idBox: 0, titleBox: "", description: nil, imageName: nil, barcode: nil, boxItems: []))
-    }
-    
     convenience init(_ title: String, _ description: String, _ qrCode: String,
                      _ imageName: String, _ items: [BoxItem]) {
-        let box = Box(idBox: 0, titleBox: title, description: description,
-                      imageName: imageName, barcode: qrCode, boxItems: items)
+        let box = Box()
         self.init(box)
     }
     
     private func configureComunication() {
         newBoxItemPublisher.sink { [weak self] boxItem in
-            guard var boxItem = boxItem else { return }
-            if boxItem.idBoxItem == 0 {
-                boxItem.idBoxItem = self?.box?.boxItems?.count ?? 0 + 1
+            guard let boxItem = boxItem else { return }
+            if boxItem.id == 0 {
+                boxItem.id = Int64(self?.box?.boxItemList?.count ?? 0 + 1)
             }
-            self?.box?.boxItems?.append(boxItem)
+            self?.box?.boxItemList?.adding(boxItem)
         }.store(in: &token)
     }
 }

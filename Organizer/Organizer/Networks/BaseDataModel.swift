@@ -29,13 +29,11 @@ final class BaseDataModel {
     }
     
     private func initPersistentContainer() {
-        DispatchQueue.main.async { [weak self] in
-            self?.persistentContainer.loadPersistentStores { description, error in
-                if let error = error {
-                    debugPrint("Load error:", error)
-                } else {
-                    debugPrint("stored path: ", description)
-                }
+        persistentContainer.loadPersistentStores { description, error in
+            if let error = error {
+                debugPrint("Load error:", error)
+            } else {
+                debugPrint("stored path: ", description)
             }
         }
     }

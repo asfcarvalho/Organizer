@@ -16,11 +16,15 @@ class NewBoxItemViewModel: ObservableObject {
     }
     
     convenience init() {
-        self.init(BoxItem(idBoxItem: 0, titleBoxItem: "", description: "", imageName: nil))
+        self.init(BoxItem())
     }
     
     convenience init(_ title: String, _ description: String, _ imageName: String) {
-        let boxItem = BoxItem(idBoxItem: 0, titleBoxItem: title, description: description, imageName: imageName)
+        let boxItem = BoxItem()
+        boxItem.id = 0
+        boxItem.title = title
+//        boxItem. = description
+        boxItem.image = imageName
         self.init(boxItem)
     }
 }

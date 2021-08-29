@@ -44,8 +44,6 @@
 		8460F65E25743F5A008DC524 /* BoxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460F65D25743F5A008DC524 /* BoxDetailViewController.swift */; };
 		8482F49D25864A1A0022F798 /* Organizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8482F49B25864A1A0022F798 /* Organizer.xcdatamodeld */; };
 		8482F4B025864D9C0022F798 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4AF25864D9C0022F798 /* BaseDataModel.swift */; };
-		8482F4F7258663A10022F798 /* BoxItemDM+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */; };
-		8482F4F9258663A10022F798 /* BoxDM+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */; };
 		8482F50C25878E100022F798 /* HomeDataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482F50B25878E100022F798 /* HomeDataModule.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,8 +108,6 @@
 		8460F65D25743F5A008DC524 /* BoxDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailViewController.swift; sourceTree = "<group>"; };
 		8482F49C25864A1A0022F798 /* Organizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Organizer.xcdatamodel; sourceTree = "<group>"; };
 		8482F4AF25864D9C0022F798 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
-		8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoxItemDM+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoxDM+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8482F50B25878E100022F798 /* HomeDataModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -497,19 +493,9 @@
 		8482F4AE25864D4F0022F798 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
-				8482F4B4258662E10022F798 /* DataModels */,
 				8482F4AF25864D9C0022F798 /* BaseDataModel.swift */,
 			);
 			path = Networks;
-			sourceTree = "<group>";
-		};
-		8482F4B4258662E10022F798 /* DataModels */ = {
-			isa = PBXGroup;
-			children = (
-				8482F4F3258663A10022F798 /* BoxItemDM+CoreDataClass.swift */,
-				8482F4F5258663A10022F798 /* BoxDM+CoreDataClass.swift */,
-			);
-			path = DataModels;
 			sourceTree = "<group>";
 		};
 		8482F50A25878DC50022F798 /* DataModule */ = {
@@ -654,11 +640,9 @@
 				8460F65025743EA4008DC524 /* BoxDetailProtocol.swift in Sources */,
 				1908C932266A50BB005E6D55 /* NewBoxItemViewModel.swift in Sources */,
 				1908C935266A527A005E6D55 /* NewBoxItemWireFrame.swift in Sources */,
-				8482F4F7258663A10022F798 /* BoxItemDM+CoreDataClass.swift in Sources */,
 				8482F49D25864A1A0022F798 /* Organizer.xcdatamodeld in Sources */,
 				1908C93B266A5816005E6D55 /* NewBoxItemProtocol.swift in Sources */,
 				8460F65925743F1D008DC524 /* BoxDetailWireFrame.swift in Sources */,
-				8482F4F9258663A10022F798 /* BoxDM+CoreDataClass.swift in Sources */,
 				8460F62F25742CFD008DC524 /* HomeProtocol.swift in Sources */,
 				8460F63725742D41008DC524 /* HomeWireFrame.swift in Sources */,
 				196A0981258E765E0032F068 /* NewBoxViewController.swift in Sources */,

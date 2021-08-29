@@ -123,7 +123,7 @@ struct NewBoxView: View {
                         }.padding(.bottom, 8)
                         
                         LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                            ForEach(items, id: \.idBoxItem) { item in
+                            ForEach(items, id: \.id) { item in
                                 DetailCell(item: item)
                             }
                         }.listRowBackground(Color(red: 0.949, green: 0.949, blue: 0.967))
@@ -152,11 +152,11 @@ struct NewBoxView: View {
         }.navigationBarTitle(boxViewName, displayMode: .inline)
         .clipped()
         .onReceive(newBoxViewModel.$box, perform: { value in
-            self.title = value?.titleBox ?? ""
+            self.title = value?.title ?? ""
             self.description = value?.description ?? ""
             self.qrCode = value?.barcode ?? ""
-            self.imageName = value?.imageName ?? ""
-            self.items = value?.boxItems ?? []
+            self.imageName = value?.image ?? ""
+            self.items = (value?.boxItemList as? [BoxItem]) ?? []
         })
         .onReceive(newBoxViewModel.$buttonEnabled, perform: { status in
             self.buttonEnabled = status

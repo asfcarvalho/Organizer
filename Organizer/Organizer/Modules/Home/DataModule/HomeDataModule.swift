@@ -12,7 +12,7 @@ class HomeDataModule: HomeDataModuleInputProtocol {
     weak var presenter: HomeDataModuleOutputProtocol?
     
     func getBoxList() {
-        guard let box = BaseDataModel.shared.fetchEntities(entity: BoxDM.self) else {
+        guard let box = BaseDataModel.shared.fetchEntities(entity: Box.self) else {
             presenter?.onError("Erro loading box list")
             return
         }

@@ -9,12 +9,7 @@ import SwiftUI
 
 struct BoxDetailView: View {
     
-    var box = Box(idBox: 1, titleBox: "Title", description: "Description", imageName: "box_sample", barcode: "123", boxItems: [
-        BoxItem(idBoxItem: 1, titleBoxItem: "Caix 1", description: "Controles Controles Controles Controles Controles Controles Controles Controles Controles, Controles Controles Controles Controles Controles Controles Controles Controles Controles", imageName: nil),
-        BoxItem(idBoxItem: 2, titleBoxItem: "Caix 2", description: "Controles", imageName: nil),
-        BoxItem(idBoxItem: 3, titleBoxItem: "Caix 3", description: "Controles", imageName: "box_sample"),
-        BoxItem(idBoxItem: 4, titleBoxItem: "Caix 4", description: "Controles", imageName: nil)
-    ])
+    var box = Box()
     
     private var gridItemLayout = [GridItem(.flexible(), spacing: 10),
                                   GridItem(.flexible(), spacing: 10)]
@@ -22,7 +17,7 @@ struct BoxDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ImageCustomTop(imageName: box.imageName)
+                ImageCustomTop(imageName: box.image)
                     .padding(.vertical, 16)
                 VStack {
                     Text("Description")
@@ -38,14 +33,14 @@ struct BoxDetailView: View {
                     .foregroundColor(Color.black)
                 
                 LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                    ForEach(box.boxItems ?? [], id: \.idBoxItem) { item in
-                        DetailCell(item: item)
-                    }
+//                    ForEach(box.boxItemList ?? [], id: \.id) { item in
+//                        DetailCell(item: item)
+//                    }
                 }
             }.padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
-        .navigationBarTitle(box.titleBox, displayMode: .inline)
+//        .navigationBarTitle(box.titleBox, displayMode: .inline)
         .clipped()
     }
 }

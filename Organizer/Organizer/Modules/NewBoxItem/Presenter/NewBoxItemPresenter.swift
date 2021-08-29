@@ -38,16 +38,16 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
     func isSaveButtonEnabled(_ textType: TextType) {
         switch textType.key {
         case .title:
-            newBoxItemViewModel?.boxItem?.titleBoxItem = textType.value
+            newBoxItemViewModel?.boxItem?.title = textType.value
         case .description:
-            newBoxItemViewModel?.boxItem?.description = textType.value
+            newBoxItemViewModel?.boxItem?.boxItemDescription = textType.value
         default:
-            newBoxItemViewModel?.boxItem?.imageName = textType.value
+            newBoxItemViewModel?.boxItem?.image = textType.value
         }
         
-        let status = !(newBoxItemViewModel?.boxItem?.titleBoxItem.isEmpty ?? true) &&
-            !(newBoxItemViewModel?.boxItem?.description?.isEmpty ?? true) &&
-            !(newBoxItemViewModel?.boxItem?.imageName?.isEmpty ?? true)
+        let status = !(newBoxItemViewModel?.boxItem?.title?.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.boxItemDescription?.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.image?.isEmpty ?? true)
         
         delegate?.setSaveButtonEnabled(status)
     }

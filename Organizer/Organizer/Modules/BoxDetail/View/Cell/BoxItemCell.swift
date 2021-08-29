@@ -13,8 +13,8 @@ struct BoxItemCell: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ImageCustomDetailCell(imageName: boxItem.imageName)
-            Text(boxItem.titleBoxItem)
+            ImageCustomDetailCell(imageName: boxItem.image)
+            Text(boxItem.title ?? "")
                 .font(.body)
                 .fontWeight(.semibold)
                 .foregroundColor(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)

@@ -14,13 +14,13 @@ struct HomeCell : View {
     var body: some View {
         HStack {
             
-            ImageCustomCell(imageBase64: box.imageName)
+            ImageCustomCell(imageBase64: box.image)
             
             VStack(alignment: .leading) {
-                Text(box.titleBox)
+                Text(box.title ?? "")
                     .font(.title)
                     .fontWeight(.bold)
-                Text(box.description ?? "")
+                Text(box.boxDescription ?? "")
                     .lineLimit(2)
             }
         }.padding(.vertical, 8)
@@ -31,7 +31,7 @@ struct HomeCell : View {
 struct HomeCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeCell(box: Box(idBox: 0, titleBox: "Teste", description: "Description", imageName: "box_sample", barcode: "123", boxItems: nil))
+            HomeCell(box: Box())
         }
     }
 }

@@ -38,5 +38,5 @@ protocol HomeDataModuleInputProtocol {
 
 protocol HomeDataModuleOutputProtocol: class {
     func onError(_ error: String)
-    func onSuccess(_ boxList: [BoxDM]?)
+    func onSuccess(_ boxList: [Box]?)
 }
