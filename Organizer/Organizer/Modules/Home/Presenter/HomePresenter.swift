@@ -13,13 +13,13 @@ class HomePresenter: HomePresenterProtocol {
     var wireFrame: HomeWireFrameProtocol?
     var dataModule: HomeDataModuleInputProtocol?
     
-    private var boxes: [Box]? = []
+    private var boxes: [BoxModel]? = []
     
     func viewDidLoad() {
         dataModule?.getBoxList()
     }
     
-    func showBoxDetail(_ box: Box) {
+    func showBoxDetail(_ box: BoxModel) {
         wireFrame?.showNewOrEditBox(from: view, box)
     }
     
@@ -33,7 +33,7 @@ extension HomePresenter: HomeDataModuleOutputProtocol {
         print(error)
     }
     
-    func onSuccess(_ boxList: [Box]?) {
+    func onSuccess(_ boxList: [BoxModel]?) {
         view?.showData(boxList ?? [])
     }
 }

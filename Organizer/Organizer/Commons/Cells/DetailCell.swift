@@ -9,13 +9,13 @@ import SwiftUI
 
 struct DetailCell: View {
     
-    var item: BoxItem
+    var item: BoxItemModel
     
     var body: some View {
-        if let imageName = item.image {
+        if let imageName = item.imageName {
             NavigationLink(
                 destination:
-                    ImageFull(imageName: imageName, title: item.title ?? "")) {
+                    ImageFull(imageName: imageName, title: item.titleBoxItem)) {
                 BoxItemCell(boxItem: item)
             }
         } else {

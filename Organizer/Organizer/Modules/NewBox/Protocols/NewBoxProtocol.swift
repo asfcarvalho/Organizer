@@ -8,10 +8,10 @@
 import UIKit
 
 protocol NewBoxWireFrameProtocol {
-    static func createViewController(_ box: Box?) -> UIViewController
+    static func createViewController(_ box: BoxModel?) -> UIViewController
     
     func showCamera(from viewController: NewBoxViewProtocol?, _ cameraView: UIViewController)
-    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?)
+    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItemModel?, _ newBoxViewModel: NewBoxViewModel?)
 }
 
 protocol NewBoxViewProtocol {
@@ -36,10 +36,10 @@ protocol NewBoxPresenterProtocol {
 protocol NewBoxDataModuleInputProtocol {
     var presenter: NewBoxDataModuleOutputProtocol? { get set }
     
-    func saveOrUpdateBox(_ box: Box?)
+    func saveOrUpdateBox(_ box: BoxModel?)
 }
 
-protocol NewBoxDataModuleOutputProtocol: class {
+protocol NewBoxDataModuleOutputProtocol: AnyObject {
     func onError(_ error: String)
     func onSuccess()
 }

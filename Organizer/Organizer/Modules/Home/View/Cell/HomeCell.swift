@@ -9,18 +9,18 @@ import SwiftUI
 
 struct HomeCell : View {
     
-    let box: Box
+    let box: BoxModel
     
     var body: some View {
         HStack {
             
-            ImageCustomCell(imageBase64: box.image)
+            ImageCustomCell(imageBase64: box.imageName)
             
             VStack(alignment: .leading) {
-                Text(box.title ?? "")
+                Text(box.titleBox ?? "")
                     .font(.title)
                     .fontWeight(.bold)
-                Text(box.boxDescription ?? "")
+                Text(box.description ?? "")
                     .lineLimit(2)
             }
         }.padding(.vertical, 8)
@@ -31,7 +31,7 @@ struct HomeCell : View {
 struct HomeCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeCell(box: Box())
+            HomeCell(box: BoxModel())
         }
     }
 }

@@ -23,8 +23,8 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
     }
 
     func viewDidLoad() {
-        if newBoxViewModel?.box == nil {
-            newBoxItemViewModel = NewBoxItemViewModel()
+        if newBoxItemViewModel?.boxItem == nil {
+            newBoxItemViewModel = NewBoxItemViewModel(BoxItemModel())
         }
         if let newBoxItemViewModel = newBoxItemViewModel {
             delegate?.showBoxItem(newBoxItemViewModel)
@@ -38,16 +38,16 @@ class NewBoxItemPresenter: NewBoxItemPresenterProtocol {
     func isSaveButtonEnabled(_ textType: TextType) {
         switch textType.key {
         case .title:
-            newBoxItemViewModel?.boxItem?.title = textType.value
+            newBoxItemViewModel?.boxItem?.titleBoxItem = textType.value
         case .description:
-            newBoxItemViewModel?.boxItem?.boxItemDescription = textType.value
+            newBoxItemViewModel?.boxItem?.description = textType.value
         default:
-            newBoxItemViewModel?.boxItem?.image = textType.value
+            newBoxItemViewModel?.boxItem?.imageName = textType.value
         }
         
-        let status = !(newBoxItemViewModel?.boxItem?.title?.isEmpty ?? true) &&
-            !(newBoxItemViewModel?.boxItem?.boxItemDescription?.isEmpty ?? true) &&
-            !(newBoxItemViewModel?.boxItem?.image?.isEmpty ?? true)
+        let status = !(newBoxItemViewModel?.boxItem?.titleBoxItem.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.description?.isEmpty ?? true) &&
+            !(newBoxItemViewModel?.boxItem?.imageName?.isEmpty ?? true)
         
         delegate?.setSaveButtonEnabled(status)
     }

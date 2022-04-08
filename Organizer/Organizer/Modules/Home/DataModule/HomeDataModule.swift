@@ -17,6 +17,12 @@ class HomeDataModule: HomeDataModuleInputProtocol {
             return
         }
         
-        presenter?.onSuccess(box)
+        presenter?.onSuccess(box.map({
+            BoxModel(titleBox: $0.title ?? "",
+                     description: $0.boxDescription,
+                     imageName: $0.image,
+                     barcode: $0.barcode,
+                     boxItems: [])
+        }))
     }
 }

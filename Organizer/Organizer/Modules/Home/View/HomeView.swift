@@ -12,8 +12,8 @@ import SwiftUI
 //MARK: HomeView SwiftUI
 struct HomeView : View {
     
-    let selectedBoxPublisher = PassthroughSubject<Box, Never>()
-    let selecteNewBoxPublisher = PassthroughSubject<Box?, Never>()
+    let selectedBoxPublisher = PassthroughSubject<BoxModel, Never>()
+    let selecteNewBoxPublisher = PassthroughSubject<BoxModel?, Never>()
     @State private var isEmpty = false
     @ObservedObject var homeViewModel: HomeViewModel
         
@@ -31,26 +31,9 @@ struct HomeView : View {
                                 self.selectedBoxPublisher.send(box)
                             }
                         }
-                    }.navigationBarTitle(Text("Boxes"))
-                    .navigationBarItems(trailing:
-                                            Image(systemName: "plus.rectangle.on.rectangle")
-                                            .imageScale(.large)
-                                            .foregroundColor(.black)
-                                            .onTapGesture {
-                                                self.selecteNewBoxPublisher.send(nil)
-                                            }
-                    )
-                    .listStyle(PlainListStyle())
-                    .onReceive(homeViewModel.$boxes, perform: { boxes in
-                        if boxes.count > 0 {
-                            isEmpty = false
-                        } else {
-                            isEmpty = true
-                        }
-                    })
+                    }
                 }
-            }
-            if isEmpty {
+            } else {
                 Text("Empty list")
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -58,7 +41,20 @@ struct HomeView : View {
                     .padding(.horizontal, 16.0)
                     .font(.title)
             }
-        }.navigationBarColor(backgroundColor: .white)
+        }.navigationBarTitle(Text("Boxes"))
+            .navigationBarItems(trailing:
+                                    Image(systemName: "plus.rectangle.on.rectangle")
+                                    .imageScale(.large)
+                                    .foregroundColor(.black)
+                                    .onTapGesture {
+                                        self.selecteNewBoxPublisher.send(nil)
+                                    }
+            )
+            .listStyle(PlainListStyle())
+            .onReceive(homeViewModel.$boxes, perform: { boxes in
+                isEmpty = boxes.count == 0
+            })
+            .navigationBarColor(backgroundColor: .white)
     }
 }
 

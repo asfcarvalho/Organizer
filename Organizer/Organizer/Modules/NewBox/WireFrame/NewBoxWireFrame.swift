@@ -9,7 +9,7 @@ import UIKit
 
 class NewBoxWireFrame: NewBoxWireFrameProtocol {
     
-    class func createViewController(_ box: Box?) -> UIViewController {
+    class func createViewController(_ box: BoxModel?) -> UIViewController {
         
         let newBoxViewModel = NewBoxViewModel(box)
         let newBoxView = NewBoxView(newBoxViewModel: newBoxViewModel)
@@ -33,7 +33,7 @@ class NewBoxWireFrame: NewBoxWireFrameProtocol {
         }
     }
     
-    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?) {
+    func showNewBoxItem(from viewController: NewBoxViewProtocol?, _ boxItem: BoxItemModel?, _ newBoxViewModel: NewBoxViewModel?) {
         let newBox = NewBoxItemWireFrame.createViewController(boxItem, newBoxViewModel)
         
         guard let vc = viewController as? NewBoxViewController else {

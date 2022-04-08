@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BoxItemCell: View {
     
-    var boxItem: BoxItem
+    var boxItem: BoxItemModel
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ImageCustomDetailCell(imageName: boxItem.image)
-            Text(boxItem.title ?? "")
+            ImageCustomDetailCell(imageName: boxItem.imageName)
+            Text(boxItem.titleBoxItem)
                 .font(.body)
                 .fontWeight(.semibold)
                 .foregroundColor(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)

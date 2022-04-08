@@ -14,13 +14,13 @@ class NewBoxDataModule: NewBoxDataModuleInputProtocol {
     var objectType = Box.self
     let coreData = BaseDataModel.shared
     
-    func saveOrUpdateBox(_ box: Box?) {
+    func saveOrUpdateBox(_ box: BoxModel?) {
         
         let boxDM = getBox(with: box?.id)
-        boxDM.id = getNextId()
-        boxDM.title = box?.title
-        boxDM.boxDescription = box?.boxDescription
-        boxDM.image = box?.image
+        boxDM.id = box?.id
+        boxDM.title = box?.titleBox
+        boxDM.boxDescription = box?.description
+        boxDM.image = box?.imageName
         boxDM.barcode = box?.barcode
         
 //        var boxItemList: [BoxItem] = []
@@ -46,10 +46,10 @@ class NewBoxDataModule: NewBoxDataModuleInputProtocol {
         }
     }
     
-    private func getBox(with id: Int64?) -> Box {
+    private func getBox(with id: String?) -> Box {
         var box = Box(context: coreData.managedContext)
         
-        if id == 0 {
+        if !(id?.isEmpty ?? true) {
             let predicate = NSPredicate(format: "id == %@", id ?? 0)
             let result = coreData.fetchEntities(entity: objectType,
                                                 predicate: predicate)
@@ -61,21 +61,15 @@ class NewBoxDataModule: NewBoxDataModuleInputProtocol {
     }
     
     private func removeBoxItemList(_ box: Box?) {
-        guard let box = box, box.id != 0 else {
+        guard let box = box, let id = box.id else {
             return
         }
-        let predicate = NSPredicate(format: "box.id MACHES %@", box.id)
+        let predicate = NSPredicate(format: "box.id MACHES %@", id)
         let boxItemList = coreData.fetchEntities(entity: BoxItem.self,
                                                  predicate: predicate)
         boxItemList?.forEach({
             let context = $0.managedObjectContext
             context?.delete($0)
         })
-    }
-    
-    private func getNextId() -> Int64 {
-        let result = coreData.fetchEntities(entity: objectType)?.last
-
-        return (result?.id ?? 0) + 1
     }
 }

@@ -32,7 +32,7 @@ struct NewBoxView: View {
     @State private var qrCode: String = ""
     @State private var imageName: String = ""
     @State private var buttonEnabled: Bool = false
-    @State private var items: [BoxItem] = []
+    @State private var items: [BoxItemModel] = []
     @State private var boxViewName = "New Box"
     @State private var isNewBox = true
     
@@ -123,7 +123,7 @@ struct NewBoxView: View {
                         }.padding(.bottom, 8)
                         
                         LazyVGrid(columns: gridItemLayout, spacing: 10) {
-                            ForEach(items, id: \.id) { item in
+                            ForEach(items, id: \.self) { item in
                                 DetailCell(item: item)
                             }
                         }.listRowBackground(Color(red: 0.949, green: 0.949, blue: 0.967))
@@ -152,11 +152,11 @@ struct NewBoxView: View {
         }.navigationBarTitle(boxViewName, displayMode: .inline)
         .clipped()
         .onReceive(newBoxViewModel.$box, perform: { value in
-            self.title = value?.title ?? ""
+            self.title = value?.titleBox ?? ""
             self.description = value?.description ?? ""
             self.qrCode = value?.barcode ?? ""
-            self.imageName = value?.image ?? ""
-            self.items = (value?.boxItemList as? [BoxItem]) ?? []
+            self.imageName = value?.imageName ?? ""
+            self.items = value?.boxItems ?? []
         })
         .onReceive(newBoxViewModel.$buttonEnabled, perform: { status in
             self.buttonEnabled = status

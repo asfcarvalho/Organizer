@@ -8,19 +8,18 @@
 import SwiftUI
 
 class NewBoxItemViewModel: ObservableObject {
-    @Published var boxItem: BoxItem?
+    @Published var boxItem: BoxItemModel?
     @Published var buttonEnabled: Bool?
     
-    init(_ boxItem: BoxItem? = nil) {
+    init(_ boxItem: BoxItemModel? = nil) {
         self.boxItem = boxItem
     }
     
     convenience init(_ title: String, _ description: String, _ imageName: String) {
-        let boxItem = BoxItem()
-        boxItem.id = 0
-        boxItem.title = title
-        boxItem.boxItemDescription = description
-        boxItem.image = imageName
+        let boxItem = BoxItemModel(idBoxItem: 0,
+                                   title: title,
+                                   description: description,
+                                   imageName: imageName)
         self.init(boxItem)
     }
 }

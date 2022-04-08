@@ -28,7 +28,7 @@ class HomeWireFrame: HomeWireFrameProtocol {
         return navigation
     }
     
-    func showNewOrEditBox(from viewController: HomeViewProtocol?, _ box: Box?) {
+    func showNewOrEditBox(from viewController: HomeViewProtocol?, _ box: BoxModel?) {
         let newBox = NewBoxWireFrame.createViewController(box)
         
         guard let vc = viewController as? HomeViewController else {

@@ -41,7 +41,7 @@ class HomeViewController: UIHostingController<HomeView> {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func showData(_ boxes: [Box]) {
+    func showData(_ boxes: [BoxModel]) {
         rootView.homeViewModel.boxes = boxes
     }
     

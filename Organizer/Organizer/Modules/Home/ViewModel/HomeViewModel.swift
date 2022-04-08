@@ -8,5 +8,5 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var boxes = [Box]()
+    @Published var boxes = [BoxModel]()
 }

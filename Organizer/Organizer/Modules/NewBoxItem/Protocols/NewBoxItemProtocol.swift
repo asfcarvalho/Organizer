@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewBoxItemWireFrameProtocol {
-    static func createViewController(_ boxItem: BoxItem?, _ newBoxViewModel: NewBoxViewModel?) -> UIViewController
+    static func createViewController(_ boxItem: BoxItemModel?, _ newBoxViewModel: NewBoxViewModel?) -> UIViewController
     
     func showCamera(from viewController: NewBoxItemViewProtocol?, _ cameraView: UIViewController)
 }
