@@ -22,19 +22,17 @@ class NewBoxDataModule: NewBoxDataModuleInputProtocol {
         boxDM.boxDescription = box?.description
         boxDM.image = box?.imageName
         boxDM.barcode = box?.barcode
-        
-//        var boxItemList: [BoxItem] = []
-//        removeBoxItemList(box)
-//        var index = 0
-//        box?.boxItemList?.forEach {
-//            index += 1
-//            let boxItem = BoxItem(context: coreData.managedContext)
-//            boxItem.id = Int64(index)
-////            boxItem.title = $0.title
-////            boxItem.image = $0.image
-//            boxItem.box = boxDM
-//            boxItemList.append(boxItem)
-//        }
+        if let boxItems = box?.boxItems {
+            boxDM.boxItemList = .init(array: boxItems.map({
+                let item = BoxItem(context: coreData.managedContext)
+                item.id = Int64($0.idBoxItem)
+                item.title = $0.titleBoxItem
+                item.boxItemDescription = $0.description
+                item.image = $0.imageName
+                
+                return item
+            }))
+        }
         
         coreData.saveContext { [weak self] result in
             switch result {
@@ -60,11 +58,11 @@ class NewBoxDataModule: NewBoxDataModuleInputProtocol {
         return box
     }
     
-    private func removeBoxItemList(_ box: Box?) {
-        guard let box = box, let id = box.id else {
+    private func removeBoxItemList(_ box: BoxModel?) {
+        guard let box = box else {
             return
         }
-        let predicate = NSPredicate(format: "box.id MACHES %@", id)
+        let predicate = NSPredicate(format: "box.id MACHES %@", box.id)
         let boxItemList = coreData.fetchEntities(entity: BoxItem.self,
                                                  predicate: predicate)
         boxItemList?.forEach({

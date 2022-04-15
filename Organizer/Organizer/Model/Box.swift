@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct BoxModel: Identifiable {
-    var id: String = UUID().uuidString
+public struct BoxModel: Identifiable {
+    public var id: String = UUID().uuidString
     var titleBox: String
     var description: String?
     var imageName: String?
@@ -24,7 +24,7 @@ struct BoxModel: Identifiable {
     }
 }
 
-struct BoxItemModel: Hashable {
+public struct BoxItemModel: Hashable {
     var idBoxItem: Int
     var titleBoxItem: String
     var description: String?

@@ -85,10 +85,22 @@ struct ImageCustomTop: View {
 struct ImageCustomDetailCell: View {
     
     var imageName: String?
+    var imageBase64: String?
     
     var body: some View {
         if let imageName = imageName {
             Image(imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 250, maxHeight: 250, alignment: .center)
+                .cornerRadius(9)
+                .clipped()
+                .overlay(RoundedRectangle(cornerRadius: 9)
+                            .stroke(Color.gray, lineWidth: 2))
+        } else if let value = imageBase64,
+                  let data = Data(base64Encoded: value),
+                  let imageData = UIImage(data: data) {
+            Image(uiImage: imageData)
                 .resizable()
                 .scaledToFill()
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 250, maxHeight: 250, alignment: .center)

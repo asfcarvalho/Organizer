@@ -29,7 +29,7 @@ class NewBoxPresenter: NewBoxPresenterProtocol {
     }
     
     func saveBox() {
-//        dataModule?.saveOrUpdateBox(newBoxViewModel?.box)
+        dataModule?.saveOrUpdateBox(newBoxViewModel?.box)
     }
     
     func isSaveButtonEnabled(_ textType: TextType) {

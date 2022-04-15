@@ -13,7 +13,7 @@ struct BoxItemCell: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ImageCustomDetailCell(imageName: boxItem.imageName)
+            ImageCustomDetailCell(imageBase64: boxItem.imageName)
             Text(boxItem.titleBoxItem)
                 .font(.body)
                 .fontWeight(.semibold)
